@@ -1,0 +1,24 @@
+[color]
+
+	# Use colors in Git commands that are capable of colored output when
+	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
+	ui = auto
+
+[core]
+
+  editor = "code --wait"
+  excludesfile = ~/.gitignore_global
+
+[init]
+
+	defaultBranch = main
+
+[push]
+
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-pushdefault
+	default = simple
+
+[user]
+
+  name = Vikram Karnaker
+  email = vkarnaker@gmail.com
