@@ -13,10 +13,6 @@ info "Installing Brewfile packages..."
 brew bundle
 success "Finished installing Brewfile packages."
 
-eval "$(fnm env --use-on-cd)"
-fnm use 16
-success "Switched to Node v16"
-
 find * -name "*.list" | while read fn; do
     cmd="${fn%.*}"
     set -- $cmd
