@@ -1,0 +1,18 @@
+tap 'mongodb/brew'
+
+cask '1password'
+cask 'adobe-acrobat-reader'
+cask 'docker'
+cask 'google-chrome'
+cask 'google-drive'
+cask 'iterm2'
+cask 'mongodb-compass'
+cask 'paintbrush'
+cask 'slack'
+cask 'visual-studio-code'
+cask 'zoom'
+
+brew 'git'
+brew 'mas'
+brew 'mongodb-community'
+brew 'pyenv'

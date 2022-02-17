@@ -1,0 +1,13 @@
+git@github.com:agapichq/agapic-metrics.git
+git@github.com:agapichq/agapichq.github.io.git
+git@github.com:agapichq/agent-buddy.git
+git@github.com:agapichq/app_agapic_com.git
+git@github.com:agapichq/buddy-convos.git
+git@github.com:agapichq/buddy-mongodb-scripts.git
+git@github.com:agapichq/buddy-mongodump.git
+git@github.com:agapichq/buddy_mongo_dump_restore.git
+git@github.com:agapichq/mongodb_sync.git
+git@github.com:agapichq/report-buddy.git
+git@github.com:agapichq/stripe-scripts.git
+git@github.com:agapichq/www-agapic-com.git
+git@github.com:agapichq/www-agapic-com-heroku-pg.git
