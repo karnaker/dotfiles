@@ -25,7 +25,7 @@ sudo scutil --set LocalHostName "vkmbp"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "vkmbp"
 
 # Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
+#sudo nvram SystemAudioVolume=" "
 
 # Disable transparency in the menu bar and elsewhere on Yosemite
 #defaults write com.apple.universalaccess reduceTransparency -bool true
@@ -41,7 +41,7 @@ defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
 
 # Disable the over-the-top focus ring animation
-defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool false
+#defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool false
 
 # Adjust toolbar title rollover delay
 #defaults write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
@@ -687,7 +687,7 @@ defaults write com.apple.terminal SecureKeyboardEntry -bool true
 defaults write com.apple.Terminal ShowLineMarks -int 0
 
 # Install the Tango Dark theme for iTerm
-open "${HOME}/init/Tango Dark.itermcolors"
+#open "${HOME}/init/Tango Dark.itermcolors"
 
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
