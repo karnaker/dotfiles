@@ -464,9 +464,17 @@ defaults write com.apple.dock wvous-tr-modifier -int 0
 # Bottom left screen corner → Start screen saver
 defaults write com.apple.dock wvous-bl-corner -int 5
 defaults write com.apple.dock wvous-bl-modifier -int 0
-# Bottom right screen corner → No op
-defaults write com.apple.dock wvous-br-corner   -int 0
+# Bottom right screen corner → Launchpad
+defaults write com.apple.dock wvous-br-corner   -int 11
 defaults write com.apple.dock wvous-br-modifier -int 0
+
+# docutil
+dockutil --no-restart --remove all
+dockutil --no-restart --add "/Applications/Google Chrome.app" --position 1
+dockutil --no-restart --add "/Applications/iTerm.app" --position 2
+dockutil --no-restart --add "/Applications/MongoDB Compass.app" --position 3
+dockutil --no-restart --add "/Applications/Slack.app" --position 4
+dockutil --no-restart --add "/Applications/Visual Studio Code.app" --position 5
 
 ###############################################################################
 # Safari & WebKit                                                             #
@@ -804,7 +812,7 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
 
 # Disable continuous spell checking
-#defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
 
 ###############################################################################
 # Google Chrome & Google Chrome Canary                                        #
@@ -943,20 +951,13 @@ for app in "Activity Monitor" \
 	"Contacts" \
 	"Dock" \
 	"Finder" \
-	"Google Chrome Canary" \
 	"Google Chrome" \
 	"Mail" \
 	"Messages" \
-	"Opera" \
 	"Photos" \
 	"Safari" \
-	"SizeUp" \
-	"Spectacle" \
 	"SystemUIServer" \
 	"Terminal" \
-	"Transmission" \
-	"Tweetbot" \
-	"Twitter" \
 	"iCal"; do
 	killall "${app}" &> /dev/null
 done
