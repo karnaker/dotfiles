@@ -12,6 +12,7 @@ cask 'slack'
 cask 'visual-studio-code'
 cask 'zoom'
 
+brew 'dockutil'
 brew 'git'
 brew 'mas'
 brew 'mongodb-community'
