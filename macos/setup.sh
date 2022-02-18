@@ -475,6 +475,8 @@ dockutil --no-restart --add "/Applications/iTerm.app" --position 2
 dockutil --no-restart --add "/Applications/MongoDB Compass.app" --position 3
 dockutil --no-restart --add "/Applications/Slack.app" --position 4
 dockutil --no-restart --add "/Applications/Visual Studio Code.app" --position 5
+killall Dock
+info "Dock is set..."
 
 ###############################################################################
 # Safari & WebKit                                                             #
