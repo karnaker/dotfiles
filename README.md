@@ -71,18 +71,19 @@ This folder is a collection of my own repos, some of which are even private. The
 ### Root (/)
 * bootstrap.sh - Calls all setup.sh scripts
 
-### Zsh (zsh/)
-* setup.sh - Symlinks all zsh files to their corresponding location in `~`
-* .zshrc - zsh configuration
-* vk mbp.json - iTerm2 profile
-
 ### Git (git/)
 * setup.sh - Symlinks all git files to `~/`
 * .gitignore_global - Contains global gitignores
 * .gitconfig - Sets several global Git variables
 
+### Iterm2 (iterm2/)
+* vk mbp.json - iTerm2 profile
+
 ### macOS Preferences (macos/)
 * setup.sh - Executes a long list of commands pertaining to macOS Preferences
+
+### Oh My Zsh (ohmyzsh/)
+* setup.sh - Installs Oh My Zsh and Powerline fonts
 
 ### Packages (packages/)
 * setup.sh - Installs the contents of the .list files and the Brewfile
@@ -100,8 +101,13 @@ This folder is a collection of my own repos, some of which are even private. The
 * setup.sh - Symlinks the settings.json file to `~/Library/Application Support/Code/User`
 * settings.json - Contains user settings for Visual Studio Code
 
+### Zsh (zsh/)
+* setup.sh - Symlinks all zsh files to their corresponding location in `~`
+* .zshrc - zsh configuration
+
 ## Known Issues
 
+1. macos > setup.sh : Error thrown when running: defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
 1. repos > setup.sh : Prints "failed to clone" even though repos are cloned successfully
 
 ## References
