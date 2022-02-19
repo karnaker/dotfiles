@@ -35,6 +35,7 @@ Based on [Rosco Kalis' dotfiles](https://github.com/rkalis/dotfiles/), but custo
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew install git
   ```
+    1. Follow any next steps advised by Homebrew. For example, on Apple Silicon machines, Homebrew will provide commands to add Homebrew to your PATH.
 3. Clone this repository
   ```bash
   git clone git@github.com:karnaker/dotfiles.git
@@ -43,6 +44,12 @@ Based on [Rosco Kalis' dotfiles](https://github.com/rkalis/dotfiles/), but custo
     1. Alternatively, only run the `setup.sh` scripts in specific subfolders if you don't need everything
 5. (Optional) Point your Alfred preference sync to a backed up folder
 6. Login to applications, enter license keys, set preferences
+    1. iTerm2: Import JSON profile
+        1. Colors > Color Presets...: `Tango Dark`
+          1. Text > Font:
+              1. `Fira Mono for Powerline`
+              1. `Medium`
+              1. `14`
 
 ## Customisation
 I strongly encourage you to play around with the configurations, and add or remove features.
@@ -51,7 +58,7 @@ If you would like to use these dotfiles for yourself, I'd recommend changing at 
 #### Git
 * The .gitconfig file includes my [user] config, replace these with your own user name and email
 
-#### OSX
+#### MacOS
 * At the top of the setup.sh file, my computer name is set, replace this with your own computer name
 
 #### Packages
@@ -80,6 +87,9 @@ This folder is a collection of my own repos, some of which are even private. The
 ### Packages (packages/)
 * setup.sh - Installs the contents of the .list files and the Brewfile
 
+### Pyenv (pyenv/)
+* setup.sh - Installs the latest python version to run
+
 ### Repositories (repos/)
 * setup.sh - Clones the repositories in the .list files at the corresponding locations
 
@@ -89,3 +99,20 @@ This folder is a collection of my own repos, some of which are even private. The
 ### Visual Studio Code (vscode/)
 * setup.sh - Symlinks the settings.json file to `~/Library/Application Support/Code/User`
 * settings.json - Contains user settings for Visual Studio Code
+
+## Known Issues
+
+1. repos > setup.sh : Prints "failed to clone" even though repos are clones successfully
+
+## References
+1. [How to Set up an Apple Mac for Software Development](https://www.stuartellis.name/articles/mac-setup/)
+1. [GitHub does dotfiles](https://dotfiles.github.io/)
+1. [Dotfiles: automating macOS system configuration](https://kalis.me/dotfiles-automating-macos-system-configuration/)
+    1. [rkalis/dotfiles](https://github.com/rkalis/dotfiles)
+1. [Wes Bos' Command Line Power User Course](https://courses.wesbos.com/account/access/6208a5fd4407c61ab3ce1368)
+1. [Oh My Zsh](https://ohmyz.sh/)
+    1. [ohmyzsh/ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
+1. [Setup macOS 2021 For Optimal Command Line Productivity](https://matt.sh/setup-2021-late)
+1. [How to use pyenv to run multiple versions of Python on a Mac](https://opensource.com/article/20/4/pyenv)
+1. [dockutil](https://github.com/kcrawford/dockutil)
+    1. [Example use of dockutil in dotfiles by Grsmto](https://github.com/Grsmto/dotfiles/blob/master/macos/dock.sh)

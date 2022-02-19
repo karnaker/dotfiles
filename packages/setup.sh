@@ -9,6 +9,10 @@ COMMENT=\#*
 
 sudo -v
 
+info "Update and upgrade Homebrew"
+brew update && brew upgrade
+success "Finished updating and upgrading Homebrew."
+
 info "Installing Brewfile packages..."
 brew bundle
 success "Finished installing Brewfile packages."
