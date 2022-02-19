@@ -26,6 +26,9 @@ fi
 info "Installing Rosetta..."
 sudo softwareupdate --install-rosetta
 
+info "Make all setup.sh files in current directory and subfolders executable"
+find . -name "setup.sh" -exec chmod +x {} \;
+
 # Package control must be executed first in order for the rest to work
 ./packages/setup.sh
 
