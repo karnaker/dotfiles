@@ -195,7 +195,8 @@ sudo pmset -a lidwake 1
 sudo pmset -a autorestart 1
 
 # Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
+# DEBUG: systemsetup[5762:23642] ### Error:-99 File:/System/Volumes/Data/SWE/macOS/BuildRoots/533514bb11/Library/Caches/com.apple.xbs/Sources/Admin/Admin-911/InternetServices.m Line:379
+#sudo systemsetup -setrestartfreeze on
 
 # Sleep the display after 15 minutes
 sudo pmset -a displaysleep 15
@@ -443,9 +444,9 @@ defaults write com.apple.dock show-recents -bool false
 #defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}'
 
 # Hot corners
+#  2: Mission Control
 # Possible values:
 #  0: no-op
-#  2: Mission Control
 #  3: Show application windows
 #  4: Desktop
 #  5: Start screen saver
@@ -471,10 +472,11 @@ defaults write com.apple.dock wvous-br-modifier -int 0
 # docutil
 dockutil --no-restart --remove all
 dockutil --no-restart --add "/Applications/Google Chrome.app" --position 1
-dockutil --no-restart --add "/Applications/iTerm.app" --position 2
-dockutil --no-restart --add "/Applications/MongoDB Compass.app" --position 3
-dockutil --no-restart --add "/Applications/Slack.app" --position 4
-dockutil --no-restart --add "/Applications/Visual Studio Code.app" --position 5
+dockutil --no-restart --add "/Applications/ExpressVPN.app" --position 2
+dockutil --no-restart --add "/Applications/iTerm.app" --position 3
+dockutil --no-restart --add "/Applications/MongoDB Compass.app" --position 4
+dockutil --no-restart --add "/Applications/Slack.app" --position 5
+dockutil --no-restart --add "/Applications/Visual Studio Code.app" --position 6
 killall Dock
 info "Dock is set..."
 
