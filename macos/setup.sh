@@ -444,9 +444,9 @@ defaults write com.apple.dock show-recents -bool false
 #defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}'
 
 # Hot corners
-#  2: Mission Control
 # Possible values:
 #  0: no-op
+#  2: Mission Control
 #  3: Show application windows
 #  4: Desktop
 #  5: Start screen saver
@@ -462,11 +462,11 @@ defaults write com.apple.dock wvous-tl-modifier -int 0
 # Top right screen corner → Desktop
 defaults write com.apple.dock wvous-tr-corner -int 4
 defaults write com.apple.dock wvous-tr-modifier -int 0
-# Bottom left screen corner → Start screen saver
-defaults write com.apple.dock wvous-bl-corner -int 5
+# Bottom left screen corner → Launchpad
+defaults write com.apple.dock wvous-bl-corner -int 11
 defaults write com.apple.dock wvous-bl-modifier -int 0
-# Bottom right screen corner → Launchpad
-defaults write com.apple.dock wvous-br-corner   -int 11
+# Bottom right screen corner → Lock Screen
+defaults write com.apple.dock wvous-br-corner   -int 13
 defaults write com.apple.dock wvous-br-modifier -int 0
 
 # docutil
