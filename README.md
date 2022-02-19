@@ -102,7 +102,7 @@ This folder is a collection of my own repos, some of which are even private. The
 
 ## Known Issues
 
-1. repos > setup.sh : Prints "failed to clone" even though repos are clones successfully
+1. repos > setup.sh : Prints "failed to clone" even though repos are cloned successfully
 
 ## References
 1. [How to Set up an Apple Mac for Software Development](https://www.stuartellis.name/articles/mac-setup/)
