@@ -77,6 +77,12 @@
         "options": {
           "full_name": "expressvpn"
         }
+      },
+      "rectangle": {
+        "version": "0.51,57",
+        "options": {
+          "full_name": "rectangle"
+        }
       }
     },
     "brew": {
@@ -295,7 +301,7 @@
       "monterey": {
         "HOMEBREW_VERSION": "3.3.15",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "1614144f26fa67f511b8973fe85f2383e52457b5",
+        "Homebrew/homebrew-core": "2f785e9bfcc63a778125139ba4263e12ba116f75",
         "CLT": "13.2.0.0.1.1638488800",
         "Xcode": "13.2.1",
         "macOS": "12.2.1"
