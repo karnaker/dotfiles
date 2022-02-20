@@ -45,11 +45,6 @@ Based on [Rosco Kalis' dotfiles](https://github.com/rkalis/dotfiles/), but custo
 5. (Optional) Point your Alfred preference sync to a backed up folder
 6. Login to applications, enter license keys, set preferences
     1. iTerm2: Import JSON profile
-        1. Colors > Color Presets...: `Tango Dark`
-          1. Text > Font:
-              1. `Fira Mono for Powerline`
-              1. `Medium`
-              1. `14`
 
 ## Customisation
 I strongly encourage you to play around with the configurations, and add or remove features.
