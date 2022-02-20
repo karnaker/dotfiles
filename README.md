@@ -102,7 +102,7 @@ This folder is a collection of my own repos, some of which are even private. The
 * settings.json - Contains user settings for Visual Studio Code
 
 ### Zsh (zsh/)
-* setup.sh - Symlinks all zsh files to their corresponding location in `~`
+* setup.sh - Installs Oh My Zsh and Powerline fonts. Symlinks all zsh files to their corresponding location in `~`
 * .zshrc - zsh configuration
 
 ## Known Issues
