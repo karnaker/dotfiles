@@ -82,9 +82,6 @@ This folder is a collection of my own repos, some of which are even private. The
 ### macOS Preferences (macos/)
 * setup.sh - Executes a long list of commands pertaining to macOS Preferences
 
-### Oh My Zsh (ohmyzsh/)
-* setup.sh - Installs Oh My Zsh and Powerline fonts
-
 ### Packages (packages/)
 * setup.sh - Installs the contents of the .list files and the Brewfile
 
