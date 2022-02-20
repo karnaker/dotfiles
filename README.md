@@ -36,7 +36,7 @@ Based on [Rosco Kalis' dotfiles](https://github.com/rkalis/dotfiles/), but custo
   brew install git
   ```
     1. Follow any next steps advised by Homebrew. For example, on Apple Silicon machines, Homebrew will provide commands to add Homebrew to your PATH.
-3. Clone this repository
+3. Clone this repository to ~/repos/github/karnaker/dotfiles
   ```bash
   git clone git@github.com:karnaker/dotfiles.git
   ```
