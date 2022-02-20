@@ -31,11 +31,20 @@ Based on [Rosco Kalis' dotfiles](https://github.com/rkalis/dotfiles/), but custo
     1. See: [Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
     1. Alternatively, restore your safely backed up SSH keys to `~/.ssh/`
 2. Install Homebrew and git
-  ```bash
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  brew install git
-  ```
-    1. Follow any next steps advised by Homebrew. For example, on Apple Silicon machines, Homebrew will provide commands to add Homebrew to your PATH.
+
+    ```bash
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew install git
+    ```
+
+    1. Follow any next steps advised by Homebrew. For example, on Apple Silicon machines, Homebrew will provide commands to add Homebrew to your PATH:
+        1. Run these two commands in your terminal to add Homebrew to your PATH
+
+            ```zsh
+            echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/vikram/.zprofile
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+            ```
+
 3. Clone this repository to ~/repos/github/karnaker/dotfiles
   ```bash
   git clone git@github.com:karnaker/dotfiles.git
