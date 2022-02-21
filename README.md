@@ -87,6 +87,9 @@ This folder is a collection of my own repos, some of which are even private. The
 ### macOS Preferences (macos/)
 * setup.sh - Executes a long list of commands pertaining to macOS Preferences
 
+### Miniconda (miniconda/)
+* postsetup.sh - Executes commands to set up shell for Miniconda
+
 ### Packages (packages/)
 * setup.sh - Installs the contents of the .list files and the Brewfile
 
@@ -106,7 +109,9 @@ This folder is a collection of my own repos, some of which are even private. The
 
 ## Known Issues
 
-1. macos > setup.sh : Error thrown when running: defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+1. macos > setup.sh :
+    1. Error thrown when running: `defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2`
+    1. Script crashes when trying to set background to solid black color: `osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/System/Library/Desktop Pictures/Solid Colors/Black.png"'`
 1. repos > setup.sh : Prints "failed to clone" even though repos are cloned successfully
 
 ## References
