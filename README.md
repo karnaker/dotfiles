@@ -51,8 +51,9 @@ Based on [Rosco Kalis' dotfiles](https://github.com/rkalis/dotfiles/), but custo
   ```
 4. Run the `bootstrap.sh` script
     1. Alternatively, only run the `setup.sh` scripts in specific subfolders if you don't need everything
-5. (Optional) Point your Alfred preference sync to a backed up folder
-6. Login to applications, enter license keys, set preferences
+5. Restart your Mac
+6. (Optional) Point your Alfred preference sync to a backed up folder
+7. Login to applications, enter license keys, set preferences
     1. iTerm2: Import JSON profile
 
 ## Customisation
