@@ -45,7 +45,7 @@ Based on [Rosco Kalis' dotfiles](https://github.com/rkalis/dotfiles/), but custo
             eval "$(/opt/homebrew/bin/brew shellenv)"
             ```
 
-3. Clone this repository to ~/repos/github/karnaker/dotfiles
+3. Clone this repository
   ```bash
   git clone git@github.com:karnaker/dotfiles.git
   ```
@@ -90,9 +90,6 @@ This folder is a collection of my own repos, some of which are even private. The
 ### Packages (packages/)
 * setup.sh - Installs the contents of the .list files and the Brewfile
 
-### Pyenv (pyenv/)
-* setup.sh - Installs the latest python version to run
-
 ### Repositories (repos/)
 * setup.sh - Clones the repositories in the .list files at the corresponding locations
 
@@ -121,6 +118,5 @@ This folder is a collection of my own repos, some of which are even private. The
 1. [Oh My Zsh](https://ohmyz.sh/)
     1. [ohmyzsh/ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
 1. [Setup macOS 2021 For Optimal Command Line Productivity](https://matt.sh/setup-2021-late)
-1. [How to use pyenv to run multiple versions of Python on a Mac](https://opensource.com/article/20/4/pyenv)
 1. [dockutil](https://github.com/kcrawford/dockutil)
     1. [Example use of dockutil in dotfiles by Grsmto](https://github.com/Grsmto/dotfiles/blob/master/macos/dock.sh)
