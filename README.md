@@ -32,9 +32,8 @@ Based on [Rosco Kalis' dotfiles](https://github.com/rkalis/dotfiles/), but custo
     1. Alternatively, restore your safely backed up SSH keys to `~/.ssh/`
 2. Install Homebrew and git
 
-    ```bash
+    ```zsh
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    brew install git
     ```
 
     1. Follow any next steps advised by Homebrew. For example, on Apple Silicon machines, Homebrew will provide commands to add Homebrew to your PATH:
@@ -44,6 +43,11 @@ Based on [Rosco Kalis' dotfiles](https://github.com/rkalis/dotfiles/), but custo
             echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/vikram/.zprofile
             eval "$(/opt/homebrew/bin/brew shellenv)"
             ```
+
+    1. Install git
+        ```zsh
+        brew install git
+        ```
 
 3. Clone this repository
   ```bash
