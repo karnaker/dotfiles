@@ -36,29 +36,33 @@ Based on [Rosco Kalis' dotfiles](https://github.com/rkalis/dotfiles/), but custo
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
 
-    1. Follow any next steps advised by Homebrew. For example, on Apple Silicon machines, Homebrew will provide commands to add Homebrew to your PATH:
-        1. Run these two commands in your terminal to add Homebrew to your PATH
-
-            ```zsh
-            echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/vikram/.zprofile
-            eval "$(/opt/homebrew/bin/brew shellenv)"
-            ```
-
-    1. Install git
+    1. Follow any next steps advised by Homebrew. For example, on Apple Silicon machines, Homebrew will provide commands to add Homebrew to your PATH: Run these two commands in your terminal to add Homebrew to your PATH
         ```zsh
-        brew install git
+        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/vikram/.zprofile
+        eval "$(/opt/homebrew/bin/brew shellenv)"
         ```
 
+    ```zsh
+    brew install git
+    ```
+
 3. Clone this repository
-  ```bash
-  git clone git@github.com:karnaker/dotfiles.git
-  ```
+
+    ```bash
+    git clone git@github.com:karnaker/dotfiles.git
+    ```
+    
 4. Run the `bootstrap.sh` script
     1. Alternatively, only run the `setup.sh` scripts in specific subfolders if you don't need everything
 5. Restart your Mac
 6. (Optional) Point your Alfred preference sync to a backed up folder
 7. Login to applications, enter license keys, set preferences
-    1. iTerm2: Import JSON profile
+    1. iTerm2: Import my JSON profile and set as default
+    1. 1password
+    1. Rectangle
+    1. Google Chrome
+    1. Google Drive
+    1. Etc.
 
 ## Customisation
 I strongly encourage you to play around with the configurations, and add or remove features.
@@ -115,7 +119,7 @@ This folder is a collection of my own repos, some of which are even private. The
 
 1. macos > setup.sh :
     1. Error thrown when running: `defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2`
-    1. Script crashes when trying to set background to solid black color: `osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/System/Library/Desktop Pictures/Solid Colors/Black.png"'`
+    1. macos setup.sh script exits during first run
 1. repos > setup.sh : Prints "failed to clone" even though repos are cloned successfully
 
 ## References
