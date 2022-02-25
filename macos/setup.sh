@@ -475,11 +475,12 @@ defaults write com.apple.dock wvous-br-modifier -int 0
 # docutil
 dockutil --no-restart --remove all
 dockutil --no-restart --add "/Applications/Google Chrome.app" --position 1
-dockutil --no-restart --add "/Applications/ExpressVPN.app" --position 2
-dockutil --no-restart --add "/Applications/iTerm.app" --position 3
-dockutil --no-restart --add "/Applications/MongoDB Compass.app" --position 4
-dockutil --no-restart --add "/Applications/Slack.app" --position 5
-dockutil --no-restart --add "/Applications/Visual Studio Code.app" --position 6
+dockutil --no-restart --add "/Applications/Discord.app" --position 2
+dockutil --no-restart --add "/Applications/ExpressVPN.app" --position 3
+dockutil --no-restart --add "/Applications/iTerm.app" --position 4
+dockutil --no-restart --add "/Applications/MongoDB Compass.app" --position 5
+dockutil --no-restart --add "/Applications/Slack.app" --position 6
+dockutil --no-restart --add "/Applications/Visual Studio Code.app" --position 7
 killall Dock
 info "Dock is set..."
 

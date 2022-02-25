@@ -3,6 +3,7 @@ tap 'mongodb/brew'
 
 cask '1password'
 cask 'adobe-acrobat-reader'
+cask 'discord'
 cask 'docker'
 cask 'expressvpn'
 cask 'google-chrome'
