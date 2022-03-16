@@ -9,6 +9,7 @@ cask 'expressvpn'
 cask 'google-chrome'
 cask 'google-drive'
 cask 'iterm2'
+cask 'krita'
 cask 'ledger-live'
 cask 'miniconda'
 cask 'mongodb-compass'
@@ -26,3 +27,5 @@ brew 'mas'
 brew 'mongodb-community'
 brew 'node'
 brew 'redis'
+
+mas 'GarageBand', id: 682658836
