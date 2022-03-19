@@ -17,6 +17,7 @@ cask 'paintbrush'
 cask 'rectangle'
 cask 'slack'
 cask 'visual-studio-code'
+cask 'vlc'
 cask 'zoom'
 
 brew 'coreutils'
