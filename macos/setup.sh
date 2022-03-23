@@ -192,17 +192,17 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 10
 ###############################################################################
 
 # Enable lid wakeup
-#sudo pmset -a lidwake 1
+sudo pmset -a lidwake 1
 
 # Restart automatically on power loss
-#sudo pmset -a autorestart 1
+sudo pmset -a autorestart 1
 
 # Restart automatically if the computer freezes
 # DEBUG: systemsetup[5762:23642] ### Error:-99 File:/System/Volumes/Data/SWE/macOS/BuildRoots/533514bb11/Library/Caches/com.apple.xbs/Sources/Admin/Admin-911/InternetServices.m Line:379
 #sudo systemsetup -setrestartfreeze on
 
 # Sleep the display after 15 minutes
-#sudo pmset -a displaysleep 15
+sudo pmset -a displaysleep 15
 
 # Disable machine sleep while charging
 #sudo pmset -c sleep 0
@@ -220,7 +220,7 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 10
 # 0: Disable hibernation (speeds up entering sleep mode)
 # 3: Copy RAM to disk so the system state can still be restored in case of a
 #    power failure.
-#sudo pmset -a hibernatemode 0
+sudo pmset -a hibernatemode 0
 
 # Remove the sleep image file to save disk space
 #sudo rm /private/var/vm/sleepimage
