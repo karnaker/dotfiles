@@ -58,7 +58,7 @@
         }
       },
       "slack": {
-        "version": "4.24.1",
+        "version": "4.25.0",
         "options": {
           "full_name": "slack"
         }
@@ -115,6 +115,12 @@
         "version": "3.0.16",
         "options": {
           "full_name": "vlc"
+        }
+      },
+      "exodus": {
+        "version": "22.3.25",
+        "options": {
+          "full_name": "exodus"
         }
       }
     },
@@ -388,7 +394,7 @@
       "monterey": {
         "HOMEBREW_VERSION": "3.4.3",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "d22636025403c2499ea1304be48dd3817abf3ba6",
+        "Homebrew/homebrew-core": "7ca105cfbf27127b00e41ac27cb25f4c065af8de",
         "CLT": "13.3.0.0.1.1645755326",
         "Xcode": "13.2.1",
         "macOS": "12.3"
