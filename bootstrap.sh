@@ -36,7 +36,7 @@ find * -name "setup.sh" -not -wholename "packages*" | while read setup; do
     ./$setup
 done
 
-find * -name "postsetup.sh" -not -wholename "packages*" | while read setup; do
+find * -name "postsetup.sh" | while read setup; do
     ./$setup
 done
 

@@ -21,6 +21,7 @@ cask 'visual-studio-code'
 cask 'vlc'
 cask 'zoom'
 
+brew 'chruby'
 brew 'coreutils'
 brew 'dockutil'
 brew 'git'
@@ -29,5 +30,6 @@ brew 'mas'
 brew 'mongodb-community'
 brew 'node'
 brew 'redis'
+brew 'ruby-install'
 
 mas 'GarageBand', id: 682658836
