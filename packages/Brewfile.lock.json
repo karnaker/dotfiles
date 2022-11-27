@@ -16,19 +16,19 @@
         }
       },
       "adobe-acrobat-reader": {
-        "version": "22.003.20258",
+        "version": "22.003.20281",
         "options": {
           "full_name": "adobe-acrobat-reader"
         }
       },
       "docker": {
-        "version": "4.14.0,91374",
+        "version": "4.14.1,91661",
         "options": {
           "full_name": "docker"
         }
       },
       "google-chrome": {
-        "version": "107.0.5304.110",
+        "version": "107.0.5304.121",
         "options": {
           "full_name": "google-chrome"
         }
@@ -46,7 +46,7 @@
         }
       },
       "mongodb-compass": {
-        "version": "1.33.1",
+        "version": "1.34.1",
         "options": {
           "full_name": "mongodb-compass"
         }
@@ -76,13 +76,13 @@
         }
       },
       "expressvpn": {
-        "version": "11.12.0.70542",
+        "version": "11.13.1.71028",
         "options": {
           "full_name": "expressvpn"
         }
       },
       "rectangle": {
-        "version": "0.61,67",
+        "version": "0.63,69",
         "options": {
           "full_name": "rectangle"
         }
@@ -118,7 +118,7 @@
         }
       },
       "exodus": {
-        "version": "22.11.13",
+        "version": "22.11.21",
         "options": {
           "full_name": "exodus"
         }
@@ -130,7 +130,7 @@
         }
       },
       "flutter": {
-        "version": "3.3.8",
+        "version": "3.3.9",
         "options": {
           "full_name": "flutter"
         }
@@ -206,6 +206,11 @@
               "cellar": ":any_skip_relocation",
               "url": "https://ghcr.io/v2/homebrew/core/mas/blobs/sha256:918a1484de106940f7bebc936e1ded87d7b65652054b09204887ad0651937ec4",
               "sha256": "918a1484de106940f7bebc936e1ded87d7b65652054b09204887ad0651937ec4"
+            },
+            "ventura": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/mas/blobs/sha256:6ef7788e28c46cdc0f916812f49dfeb1fabf2240a8c36f33ce34bcfb9df1502f",
+              "sha256": "6ef7788e28c46cdc0f916812f49dfeb1fabf2240a8c36f33ce34bcfb9df1502f"
             },
             "monterey": {
               "cellar": ":any_skip_relocation",
@@ -506,17 +511,21 @@
       "GarageBand": {
         "id": "682658836",
         "version": "10.4.7"
+      },
+      "Xcode": {
+        "id": "497799835",
+        "version": "14.1"
       }
     }
   },
   "system": {
     "macos": {
       "monterey": {
-        "HOMEBREW_VERSION": "3.6.11",
+        "HOMEBREW_VERSION": "3.6.12",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "ac95c9b256941f1835cca960759e54a9ed5ac591",
+        "Homebrew/homebrew-core": "8b40cb1a8bfb8c21b5285a675fbf6abc5a8ad361",
         "CLT": "13.4.0.0.1.1651278267",
-        "Xcode": "13.4.1",
+        "Xcode": "14.1",
         "macOS": "12.5.1"
       }
     }
