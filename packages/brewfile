@@ -2,6 +2,7 @@ tap 'heroku/brew'
 tap 'mongodb/brew'
 
 cask '1password'
+cask 'adobe-acrobat-pro'
 cask 'adobe-acrobat-reader'
 cask 'discord'
 cask 'docker'
