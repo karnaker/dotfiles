@@ -26,7 +26,6 @@ cask 'zoom'
 
 brew 'chruby'
 brew 'coreutils'
-brew 'dockutil'
 brew 'git'
 brew 'heroku'
 brew 'mas'
@@ -36,4 +35,5 @@ brew 'redis'
 brew 'ruby-install'
 
 mas 'GarageBand', id: 682658836
+mas 'iMovie', id: 408981434
 mas 'Xcode', id: 497799835
