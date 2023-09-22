@@ -15,7 +15,6 @@ cask 'google-drive'
 cask 'iterm2'
 cask 'krita'
 cask 'ledger-live'
-cask 'miniconda'
 cask 'mongodb-compass'
 cask 'ngrok'
 cask 'paintbrush'
@@ -25,7 +24,6 @@ cask 'visual-studio-code'
 cask 'vlc'
 cask 'zoom'
 
-brew 'chruby'
 brew 'cocoapods'
 brew 'coreutils'
 brew 'git'
@@ -34,7 +32,6 @@ brew 'mas'
 brew 'mongodb-community'
 brew 'node'
 brew 'redis'
-brew 'ruby-install'
 
 mas 'GarageBand', id: 682658836
 mas 'iMovie', id: 408981434

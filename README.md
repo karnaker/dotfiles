@@ -51,7 +51,7 @@ Based on [Rosco Kalis' dotfiles](https://github.com/rkalis/dotfiles/), but custo
     ```bash
     git clone git@github.com:karnaker/dotfiles.git
     ```
-    
+
 4. Run the `bootstrap.sh` script
     1. Alternatively, only run the `setup.sh` scripts in specific subfolders if you don't need everything
 5. Restart your Mac
@@ -94,9 +94,6 @@ This folder is a collection of my own repos, some of which are even private. The
 
 ### macOS Preferences (macos/)
 * setup.sh - Executes a long list of commands pertaining to macOS Preferences
-
-### Miniconda (miniconda/)
-* postsetup.sh - Executes commands to set up shell for Miniconda
 
 ### Packages (packages/)
 * setup.sh - Installs the contents of the .list files and the Brewfile

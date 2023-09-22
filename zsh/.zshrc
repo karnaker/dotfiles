@@ -100,12 +100,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Configure shell to automatically use chruby
-# Source: https://jekyllrb.com/docs/installation/macos/
-source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh
-source $(brew --prefix)/opt/chruby/share/chruby/auto.sh
-chruby ruby-3.1.2
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
