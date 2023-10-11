@@ -1,12 +1,12 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
 
 # Inform the user that the bootstrap process is starting
 echo -e "\n\033[1;36m==== Starting the Bootstrap Process ====\033[0m\n"
 
 # Check if Homebrew is installed. If it's not, install it.
-if [[ ! $(which brew) ]]; then
+if [ ! $(which brew) ]; then
   echo -e "\033[1;36m==== Installing Homebrew ====\033[0m"
-  /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Update the Homebrew recipes to their latest versions
