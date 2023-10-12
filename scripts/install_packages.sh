@@ -2,6 +2,12 @@
 
 # This script handles the installation of software packages
 
+# Paths to lists
+TAPS_LIST="scripts/brew_taps.list"
+CASKS_LIST="scripts/brew_casks.list"
+FORMULAE_LIST="scripts/brew_formulae.list"
+MAS_LIST="scripts/mas_apps.list"
+
 # Function to install Homebrew
 install_homebrew() {
     if [ ! $(which brew) ]; then
@@ -25,28 +31,34 @@ upgrade_formulae() {
 # Function to tap repositories
 tap_repositories() {
     printf "\033[1;36m==== Tapping Necessary Repositories ====\033[0m\n"
-    brew tap heroku/brew
-    brew tap mongodb/brew
+    while IFS= read -r tap; do
+        brew tap "$tap"
+    done < "$TAPS_LIST"
 }
 
 # Function to install cask software
 install_cask_software() {
     printf "\033[1;36m==== Installing Cask Software ====\033[0m\n"
-    brew install --cask 1password adobe-acrobat-pro adobe-acrobat-reader android-studio discord docker exodus expressvpn flutter google-chrome google-drive iterm2 krita ledger-live mongodb-compass ngrok paintbrush rectangle slack visual-studio-code vlc zoom
+    while IFS= read -r cask; do
+        brew install --cask "$cask"
+    done < "$CASKS_LIST"
 }
 
 # Function to install formulae
 install_formulae() {
     printf "\033[1;36m==== Installing Formulae ====\033[0m\n"
-    brew install cocoapods coreutils git heroku mas mongodb-community node redis
+    while IFS= read -r formula; do
+        brew install "$formula"
+    done < "$FORMULAE_LIST"
 }
 
 # Function to install MAS software
 install_mas_software() {
     printf "\033[1;36m==== Installing Mac App Store Software ====\033[0m\n"
-    mas install 682658836 # GarageBand
-    mas install 408981434 # iMovie
-    mas install 497799835 # Xcode
+    while IFS='#' read -r app_id app_name; do
+        printf "\033[1;36mInstalling: $app_name with ID: $app_id\033[0m\n"
+        mas install $app_id
+    done < "$MAS_LIST"
 }
 
 # Main function to orchestrate the package installation
