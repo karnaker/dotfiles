@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-# This script configures the Xcode app
+# This script configures Xcode
 
 # Function to check if Xcode is installed
 is_xcode_installed() {
