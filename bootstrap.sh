@@ -7,6 +7,18 @@ start_bootstrap() {
     printf "\n\033[1;36m==== Starting the Bootstrap Process ====\033[0m\n"
 }
 
+# Function to prompt for sudo password at the beginning
+prompt_for_password() {
+    # Check if user is not root and then prompt for password
+    if [ "$EUID" -ne 0 ]; then
+        printf "\033[1;36mPlease enter your password for script execution\033[0m\n"
+        sudo -v
+        
+        # Keep updating the sudo timestamp to avoid asking password again during execution
+        while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+    fi
+}
+
 # Function to grant execute permissions to scripts
 grant_permissions() {
     printf "\033[1;36m==== Granting Execute Permissions to Scripts in ./scripts ====\033[0m\n"
@@ -43,6 +55,7 @@ end_bootstrap() {
 # Main function to run the bootstrap process
 main() {
     start_bootstrap
+    prompt_for_password
     grant_permissions
     run_system_tools
     run_install_packages
