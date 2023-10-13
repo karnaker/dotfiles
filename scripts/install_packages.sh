@@ -2,11 +2,8 @@
 
 # This script handles the installation of software packages
 
-# Paths to lists
-TAPS_LIST="scripts/brew_taps.list"
-CASKS_LIST="scripts/brew_casks.list"
-FORMULAE_LIST="scripts/brew_formulae.list"
-MAS_LIST="scripts/mas_apps.list"
+# Paths
+BREWFILE_PATH="scripts/Brewfile"
 
 # Function to install Homebrew
 install_homebrew() {
@@ -28,37 +25,15 @@ upgrade_formulae() {
     brew upgrade
 }
 
-# Function to tap repositories
-tap_repositories() {
-    printf "\033[1;36m==== Tapping Necessary Repositories ====\033[0m\n"
-    while IFS= read -r tap; do
-        brew tap "$tap"
-    done < "$TAPS_LIST"
-}
-
-# Function to install cask software
-install_cask_software() {
-    printf "\033[1;36m==== Installing Cask Software ====\033[0m\n"
-    while IFS= read -r cask; do
-        brew install --cask "$cask"
-    done < "$CASKS_LIST"
-}
-
-# Function to install formulae
-install_formulae() {
-    printf "\033[1;36m==== Installing Formulae ====\033[0m\n"
-    while IFS= read -r formula; do
-        brew install "$formula"
-    done < "$FORMULAE_LIST"
-}
-
-# Function to install MAS software
-install_mas_software() {
-    printf "\033[1;36m==== Installing Mac App Store Software ====\033[0m\n"
-    while IFS='#' read -r app_id app_name; do
-        printf "\033[1;36mInstalling: $app_name with ID: $app_id\033[0m\n"
-        mas install $app_id
-    done < "$MAS_LIST"
+# Function to run brew bundle
+run_brew_bundle() {
+    printf "\033[1;36m==== Installing Packages from Brewfile ====\033[0m\n"
+    if [ -f "$BREWFILE_PATH" ]; then
+        brew bundle --file="$BREWFILE_PATH"
+    else
+        printf "\033[1;31mError: Brewfile does not exist at $BREWFILE_PATH.\033[0m\n"
+        exit 1
+    fi
 }
 
 # Main function to orchestrate the package installation
@@ -69,10 +44,7 @@ install_packages() {
     install_homebrew
     update_homebrew
     upgrade_formulae
-    tap_repositories
-    install_cask_software
-    install_formulae
-    install_mas_software
+    run_brew_bundle
 
     # Inform the user that the installation process is complete
     printf "\n\033[1;36m==== Package Installation Complete! ====\033[0m\n"
