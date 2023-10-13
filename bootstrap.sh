@@ -47,6 +47,17 @@ run_install_packages() {
     fi
 }
 
+# Function to run the Xcode configuration script
+run_xcode_configuration() {
+    printf "\033[1;36m==== Running Xcode Configuration Script ====\033[0m\n"
+    if [ -x scripts/configure_xcode.sh ]; then
+        sh scripts/configure_xcode.sh
+    else
+        printf "\033[1;31mError: scripts/configure_xcode.sh does not have execute permissions or does not exist.\033[0m\n"
+        exit 1
+    fi
+}
+
 # Function to inform the user about the bootstrap completion
 end_bootstrap() {
     printf "\n\033[1;36m==== Bootstrap Process Complete! ====\033[0m\n"
@@ -59,6 +70,7 @@ main() {
     grant_permissions
     run_system_tools
     run_install_packages
+    run_xcode_configuration
     end_bootstrap
 }
 
