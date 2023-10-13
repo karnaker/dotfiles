@@ -36,6 +36,18 @@ run_brew_bundle() {
     fi
 }
 
+# Function to ensure the latest npm version
+ensure_latest_npm() {
+    printf "\033[1;36m==== Ensuring the Latest NPM Version ====\033[0m\n"
+    # Check if node is installed
+    if which node > /dev/null; then
+        npm install -g npm
+    else
+        printf "\033[1;31mError: Node is not installed. Cannot update NPM.\033[0m\n"
+        exit 1
+    fi
+}
+
 # Main function to orchestrate the package installation
 install_packages() {
     # Inform the user that the installation process is starting
@@ -45,6 +57,7 @@ install_packages() {
     update_homebrew
     upgrade_formulae
     run_brew_bundle
+    ensure_latest_npm
 
     # Inform the user that the installation process is complete
     printf "\n\033[1;36m==== Package Installation Complete! ====\033[0m\n"
