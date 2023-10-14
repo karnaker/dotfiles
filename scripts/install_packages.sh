@@ -7,9 +7,12 @@ BREWFILE_PATH="scripts/Brewfile"
 
 # Function to install Homebrew
 install_homebrew() {
+    # Check if Homebrew is already installed
     if [ ! $(which brew) ]; then
         printf "\033[1;36m==== Installing Homebrew ====\033[0m\n"
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        
+        # Use /bin/bash instead of sh to execute the Homebrew installation script
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
 }
 
