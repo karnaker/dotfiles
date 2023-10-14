@@ -53,7 +53,8 @@ To set up a new macOS environment using these dotfiles:
 
 1. Clone this repository to your local machine.
 2. Navigate to the directory: `cd path/to/dotfiles`
-3. Run the bootstrap script: `./bootstrap.sh`
+3. Ensure the script has execute permissions: `chmod +x bootstrap.sh`
+4. Run the bootstrap script: `./bootstrap.sh`
 
 ## Important Notes
 
@@ -67,4 +68,4 @@ If you wish to contribute to these dotfiles, please fork the repository and subm
 
 ## License
 
-[MIT License](LICENSE)
+[MIT License](license)
