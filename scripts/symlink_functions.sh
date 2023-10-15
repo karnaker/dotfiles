@@ -62,3 +62,33 @@ create_symlink() {
         return 1
     fi
 }
+
+clear_broken_symlinks() {
+    # This function finds and removes broken symlinks within a given directory.
+    # Parameters:
+    # $1: Directory to search for broken symlinks.
+
+    # Check if the directory argument is provided
+    if [ -z "$1" ]; then
+        printf "${CYAN}Error: Missing directory argument.${RESET}\n"
+        return 1
+    fi
+
+    local dir="$1"
+    
+    # Check if the given directory exists
+    if [ ! -d "$dir" ]; then
+        printf "${CYAN}Error: Directory does not exist: $dir${RESET}\n"
+        return 1
+    fi
+
+    # Find broken symlinks in the given directory
+    find "$dir" -type l ! -exec test -e {} \; -print | while read -r symlink; do
+        # Attempt to remove the broken symlink and print the status
+        if rm "$symlink"; then
+            printf "${CYAN}Removed broken symlink at: $symlink${RESET}\n"
+        else
+            printf "${CYAN}Failed to remove broken symlink at: $symlink${RESET}\n"
+        fi
+    done
+}
