@@ -58,6 +58,17 @@ run_xcode_configuration() {
     fi
 }
 
+# Function to run the git configuration setup script
+run_git_config_setup() {
+    printf "\033[1;36m==== Running Git Configuration Setup Script ====\033[0m\n"
+    if [ -x scripts/setup_git_configs.sh ]; then
+        sh scripts/setup_git_configs.sh
+    else
+        printf "\033[1;31mError: scripts/setup_git_configs.sh does not have execute permissions or does not exist.\033[0m\n"
+        exit 1
+    fi
+}
+
 # Function to inform the user about the bootstrap completion
 end_bootstrap() {
     printf "\n\033[1;36m==== Bootstrap Process Complete! ====\033[0m\n"
@@ -71,8 +82,10 @@ main() {
     run_system_tools
     run_install_packages
     run_xcode_configuration
+    run_git_config_setup
     end_bootstrap
 }
 
 # Call the main function
 main
+
