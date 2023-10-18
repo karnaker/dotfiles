@@ -27,21 +27,29 @@ dotfiles/
 
 ## Scripts
 
-### bootstrap.sh
+### `bootstrap.sh`
 
 The main script that orchestrates the entire setup process. It ensures permissions are granted, runs system tool installations, package installations, and Xcode configurations.
 
-### scripts/system_tools.sh
+### `scripts/system_tools.sh`
 
 Handles the installation of essential system tools like XCode Command Line Tools and Rosetta (for M1 Macs).
 
-### scripts/install_packages.sh
+### `scripts/install_packages.sh`
 
 Manages the installation of various software packages using Homebrew. It uses the `scripts/Brewfile` to determine which packages to install.
 
-### scripts/configure_xcode.sh
+### `scripts/configure_xcode.sh`
 
 Configures Xcode after its installation via the App Store. It sets the default command-line tools and accepts the license agreement.
+
+### `scripts/setup_git_configs.sh`
+
+Sets up Git configurations, including aliases and user information, and symlinks Git-related files.
+
+### `scripts/setup_iterm2_configs.sh`
+
+Downloads and updates iTerm2 themes, symlinks iTerm2 profile, and manages iTerm2 configurations.
 
 ## Configurations
 
