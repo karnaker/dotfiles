@@ -81,6 +81,18 @@ run_iterm2_config_setup() {
     fi
 }
 
+# Function to run the macOS configuration script
+run_macos_config() {
+    printf "\033[1;36m==== Running macOS Configuration Script ====\033[0m\n"
+    # Check if the script has execute permissions and exists
+    if [ -x scripts/macos_config.sh ]; then
+        sh scripts/macos_config.sh
+    else
+        printf "\033[1;31mError: scripts/macos_config.sh does not have execute permissions or does not exist.\033[0m\n"
+        exit 1
+    fi
+}
+
 # Function to inform the user about the bootstrap completion
 end_bootstrap() {
     printf "\n\033[1;36m==== Bootstrap Process Complete! ====\033[0m\n"
@@ -96,6 +108,7 @@ main() {
     run_xcode_configuration
     run_git_config_setup
     run_iterm2_config_setup
+    run_macos_config
     end_bootstrap
 }
 

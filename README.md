@@ -29,7 +29,7 @@ dotfiles/
 
 ### `bootstrap.sh`
 
-The main script that orchestrates the entire setup process. It ensures permissions are granted, runs system tool installations, package installations, and Xcode configurations.
+The main script that orchestrates the entire setup process. It ensures permissions are granted, runs system tool installations, package installations, Xcode configurations, and macOS configuration.
 
 ### `scripts/system_tools.sh`
 
@@ -50,6 +50,10 @@ Sets up Git configurations, including aliases and user information, and symlinks
 ### `scripts/setup_iterm2_configs.sh`
 
 Downloads and updates iTerm2 themes, symlinks iTerm2 profile, and manages iTerm2 configurations.
+
+### `scripts/macos_config.sh`
+
+Configures macOS settings and preferences to ensure a customized and consistent environment. The script covers a wide range of settings, including computer name, UI/UX preferences, system defaults, and more.
 
 ## Configurations
 
