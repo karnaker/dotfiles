@@ -4,10 +4,13 @@
 CYAN="\033[1;36m"
 RESET="\033[0m"
 
-# Variables
-THEME_URL="https://raw.githubusercontent.com/dracula/iterm/master/Dracula.itermcolors"
-LOCAL_THEME_PATH="$(pwd)/configs/iterm2/themes/Dracula.itermcolors"
-TEMP_THEME_PATH="$(pwd)/tmp/Dracula.itermcolors"
+# Import our symlink functions
+. scripts/symlink_functions.sh
+
+# Variables for theme setup
+THEME_URL="https://raw.githubusercontent.com/MartinSeeler/iterm2-material-design/master/material-design-colors.itermcolors"
+LOCAL_THEME_PATH="$(pwd)/configs/iterm2/themes/material-design-colors.itermcolors"
+TEMP_THEME_PATH="$(pwd)/tmp/material-design-colors.itermcolors"
 
 # Function to download iTerm2 theme
 download_theme() {
@@ -49,5 +52,23 @@ update_iterm2_theme() {
     rm -rf "$(dirname "$TEMP_THEME_PATH")"
 }
 
-# Call the function to update iTerm2 theme
-update_iterm2_theme
+# Function to symlink iTerm2 profile
+setup_iterm2_profile() {
+    local PROFILE_SOURCE_PATH="$(pwd)/configs/iterm2/iterm2_profile_base.json"
+    local PROFILE_TARGET_PATH="$HOME/Library/Application Support/iTerm2/DynamicProfiles/iterm2_profile_base.json"
+
+    # Clear broken symlinks in the target directory
+    clear_broken_symlinks "$(dirname "$PROFILE_TARGET_PATH")"
+
+    # Symlink the profile
+    create_symlink "$PROFILE_SOURCE_PATH" "$PROFILE_TARGET_PATH"
+}
+
+# Main function to set up iTerm2 configurations
+setup_iterm2_configs() {
+    update_iterm2_theme
+    setup_iterm2_profile
+}
+
+# Call the main function
+setup_iterm2_configs

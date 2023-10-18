@@ -69,6 +69,18 @@ run_git_config_setup() {
     fi
 }
 
+# Function to run the iTerm2 configuration setup script
+run_iterm2_config_setup() {
+    printf "\033[1;36m==== Running iTerm2 Configuration Setup Script ====\033[0m\n"
+    # Check if the script has execute permissions and exists
+    if [ -x scripts/setup_iterm2_configs.sh ]; then
+        sh scripts/setup_iterm2_configs.sh
+    else
+        printf "\033[1;31mError: scripts/setup_iterm2_configs.sh does not have execute permissions or does not exist.\033[0m\n"
+        exit 1
+    fi
+}
+
 # Function to inform the user about the bootstrap completion
 end_bootstrap() {
     printf "\n\033[1;36m==== Bootstrap Process Complete! ====\033[0m\n"
@@ -83,9 +95,9 @@ main() {
     run_install_packages
     run_xcode_configuration
     run_git_config_setup
+    run_iterm2_config_setup
     end_bootstrap
 }
 
 # Call the main function
 main
-

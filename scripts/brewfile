@@ -1,4 +1,5 @@
 tap 'heroku/brew'
+tap 'homebrew/cask-fonts'
 tap 'mongodb/brew'
 
 cask '1password'
@@ -9,6 +10,7 @@ cask 'discord'
 cask 'docker'
 cask 'expressvpn'
 cask 'flutter'
+cask 'font-jetbrains-mono'
 cask 'google-chrome'
 cask 'google-drive'
 cask 'iterm2'
