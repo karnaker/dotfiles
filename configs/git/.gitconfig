@@ -35,8 +35,8 @@
 	nb = checkout -b
 	# List all branches.
 	br = branch -a
-	# Show concise status.
-	st = status -s
+	# Show status
+	st = status
 
 # Configuration for diff tool. Use your preferred diff tool.
 [diff]
