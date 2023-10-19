@@ -14,12 +14,11 @@ dotfiles/
 │   ├── ...                # Other scripts can go here
 │
 ├── configs/               # Directory for configuration files
-│   ├── zsh/
-│   │   ├── .zshrc
-│   │   ├── ...            # Other Zsh-related configuration files
 │   ├── git/
 │   │   ├── .gitconfig
 │   │   ├── ...            # Other Git-related configuration files
+│   ├── zsh/
+│   │   ├── .zshrc
 │   ├── ...
 │
 └── README.md              # Documentation for this repository
@@ -29,7 +28,7 @@ dotfiles/
 
 ### `bootstrap.sh`
 
-The main script that orchestrates the entire setup process. It ensures permissions are granted, runs system tool installations, package installations, Xcode configurations, and macOS configuration.
+The main script that orchestrates the entire setup process. It ensures permissions are granted, runs system tool installations, package installations, Xcode configurations, Git configurations, iTerm2 configurations, macOS configuration, and Zsh configuration.
 
 ### `scripts/system_tools.sh`
 
@@ -54,6 +53,10 @@ Downloads and updates iTerm2 themes, symlinks iTerm2 profile, and manages iTerm2
 ### `scripts/macos_config.sh`
 
 Configures macOS settings and preferences to ensure a customized and consistent environment. The script covers a wide range of settings, including computer name, UI/UX preferences, system defaults, and more.
+
+### `scripts/setup_zsh_configs.sh`
+
+Configures Zsh, installs Oh My Zsh, and symlinks the `.zshrc` file.
 
 ## Configurations
 
