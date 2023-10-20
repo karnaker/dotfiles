@@ -9,17 +9,23 @@ dotfiles/
 │
 ├── bootstrap.sh           # The main bootstrap file
 │
-├── scripts/               # Directory for various scripts
-│   ├── install_packages.sh
-│   ├── ...                # Other scripts can go here
-│
 ├── configs/               # Directory for configuration files
 │   ├── git/
 │   │   ├── .gitconfig
-│   │   ├── ...            # Other Git-related configuration files
+│   │   ├── .gitignore_global
+│   ├── iterm2/
+│   │   ├── iterm2_profile_base.json
+│   │   ├── themes/
+│   ├── vscode/
+│   │   ├── settings.json
+│   │   ├── extensions.txt
 │   ├── zsh/
 │   │   ├── .zshrc
 │   ├── ...
+│
+├── scripts/               # Directory for various scripts
+│   ├── install_packages.sh
+│   ├── ...                # Other scripts can go here
 │
 └── README.md              # Documentation for this repository
 ```
@@ -28,7 +34,7 @@ dotfiles/
 
 ### `bootstrap.sh`
 
-The main script that orchestrates the entire setup process. It ensures permissions are granted, runs system tool installations, package installations, Xcode configurations, Git configurations, iTerm2 configurations, macOS configuration, and Zsh configuration.
+The main script that orchestrates the entire setup process. It ensures permissions are granted, runs system tool installations, package installations, Xcode configurations, Git configurations, iTerm2 configurations, macOS configuration, Zsh configuration, and VS Code configuration.
 
 ### `scripts/system_tools.sh`
 
@@ -58,9 +64,19 @@ Configures macOS settings and preferences to ensure a customized and consistent 
 
 Configures Zsh, installs Oh My Zsh, and symlinks the `.zshrc` file.
 
+### `scripts/setup_vscode_configs.sh`
+
+Handles the configuration of VS Code. This includes symlinking the `settings.json` for VS Code preferences and installing extensions listed in `extensions.txt`.
+
 ## Configurations
 
 Configuration files are stored in the `configs/` directory. These files are used to set up various tools and applications, ensuring they operate with preferred settings.
+
+### VS Code Configurations (`configs/vscode/`)
+
+- `settings.json`: Contains various settings for the VS Code editor. These include preferences related to appearance, plugins, and other behaviors.
+  
+- `extensions.txt`: A list of VS Code extensions to be installed. Each line represents the identifier of an extension available on the VS Code marketplace.
 
 ## Usage
 

@@ -37,7 +37,7 @@ symlink_zshrc() {
     create_symlink "$zsh_source_path" "$zsh_target_path"
 }
 
-# Main function for installing Oh My Zsh
+# Main function for configuring Zsh
 main() {
     install_oh_my_zsh
     symlink_zshrc

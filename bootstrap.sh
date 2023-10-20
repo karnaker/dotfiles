@@ -109,6 +109,32 @@ run_zsh_config_setup() {
     fi
 }
 
+# Function to run the VS Code configuration setup script
+run_vscode_config_setup() {
+    # Print a message to inform the user about the VS Code setup process
+    printf "${CYAN}==== Running VS Code Configuration Setup Script ====${RESET}\n"
+
+    # Define the path to the VS Code setup script
+    local vscode_setup_script="scripts/setup_vscode_configs.sh"
+
+    # Check if the script has execute permissions and exists
+    if [ -x "$vscode_setup_script" ]; then
+        # Execute the VS Code setup script
+        sh "$vscode_setup_script"
+
+        # Check the exit status of the last command
+        if [ $? -ne 0 ]; then
+            # Print an error message if the script execution fails
+            printf "${CYAN}Error: Failed to execute $vscode_setup_script.${RESET}\n"
+            exit 1
+        fi
+    else
+        # Print an error message if the script does not have execute permissions or does not exist
+        printf "${CYAN}Error: $vscode_setup_script does not have execute permissions or does not exist.${RESET}\n"
+        exit 1
+    fi
+}
+
 # Function to inform the user about the bootstrap completion
 end_bootstrap() {
     printf "\n${CYAN}==== Bootstrap Process Complete! ====${RESET}\n"
@@ -126,6 +152,7 @@ main() {
     run_iterm2_config_setup
     run_macos_config
     run_zsh_config_setup
+    run_vscode_config_setup
     end_bootstrap
 }
 

@@ -61,7 +61,7 @@
         }
       },
       "google-chrome": {
-        "version": "118.0.5993.88",
+        "version": "118.0.5993.96",
         "options": {
           "full_name": "google-chrome"
         }
@@ -475,7 +475,7 @@
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "",
-        "Xcode": "15.0",
+        "Xcode": "15.0.1",
         "macOS": "13.5.2"
       }
     }
