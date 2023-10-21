@@ -8,7 +8,7 @@
         "revision": "22056afb227d46948b07001f0dfbaa6be3d4fd44"
       },
       "homebrew/cask-fonts": {
-        "revision": "f9fc73abc73aebfbc4937302988e333c00939ebe"
+        "revision": "c9413d8bc7e4a716c46d0bb5ecd6bada727bae86"
       }
     },
     "cask": {
@@ -464,7 +464,7 @@
       },
       "Xcode": {
         "id": "497799835",
-        "version": "15.0"
+        "version": "15.0.1"
       }
     }
   },

@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+# TODO Update README to include steps from clean machine, before bootstrap.sh is run. Guide on Mac wizard. Do I need to install git? Etc.
 # Main bootstrap script
 
 # Colors for printing
@@ -135,6 +136,32 @@ run_vscode_config_setup() {
     fi
 }
 
+# Function to run the clone repositories script
+run_clone_repositories() {
+    # Print a message to inform the user about the repository cloning process
+    printf "${CYAN}==== Running Repository Cloning Script ====${RESET}\n"
+
+    # Define the path to the clone repositories script
+    local clone_repos_script="scripts/clone_repositories.sh"
+
+    # Check if the script has execute permissions and exists
+    if [ -x "$clone_repos_script" ]; then
+        # Execute the clone repositories script
+        sh "$clone_repos_script"
+
+        # Check the exit status of the last command
+        if [ $? -ne 0 ]; then
+            # Print an error message if the script execution fails
+            printf "${CYAN}Error: Failed to execute $clone_repos_script.${RESET}\n"
+            exit 1
+        fi
+    else
+        # Print an error message if the script does not have execute permissions or does not exist
+        printf "${CYAN}Error: $clone_repos_script does not have execute permissions or does not exist.${RESET}\n"
+        exit 1
+    fi
+}
+
 # Function to inform the user about the bootstrap completion
 end_bootstrap() {
     printf "\n${CYAN}==== Bootstrap Process Complete! ====${RESET}\n"
@@ -153,6 +180,7 @@ main() {
     run_macos_config
     run_zsh_config_setup
     run_vscode_config_setup
+    run_clone_repositories
     end_bootstrap
 }
 

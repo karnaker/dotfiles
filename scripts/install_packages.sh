@@ -2,6 +2,7 @@
 
 # This script handles the installation of software packages
 
+# TODO Should brewfile go in /scripts or /configs?
 # Paths
 BREWFILE_PATH="scripts/Brewfile"
 

@@ -26,6 +26,7 @@ download_theme() {
     fi
 }
 
+# TODO You're not using these themes. Remove them.
 # Function to check and update iTerm2 theme
 update_iterm2_theme() {
     # If local theme doesn't exist, download it
