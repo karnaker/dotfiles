@@ -8,7 +8,9 @@ RESET="\033[0m"
 . scripts/symlink_functions.sh
 
 # Variables for theme setup
-THEME_URL="https://raw.githubusercontent.com/MartinSeeler/iterm2-material-design/master/material-design-colors.itermcolors"
+# We're currently not using an external theme for iTerm2. To use one, populate THEME_URL.
+# Example URL: "https://raw.githubusercontent.com/MartinSeeler/iterm2-material-design/master/material-design-colors.itermcolors"
+THEME_URL=""
 LOCAL_THEME_PATH="$(pwd)/configs/iterm2/themes/material-design-colors.itermcolors"
 TEMP_THEME_PATH="$(pwd)/tmp/material-design-colors.itermcolors"
 
@@ -18,7 +20,7 @@ download_theme() {
 
     # Download theme to temporary location
     curl -fsSL "$THEME_URL" -o "$TEMP_THEME_PATH"
-
+    
     # Check the exit status of curl
     if [ $? -ne 0 ]; then
         printf "${CYAN}Error: Failed to download theme from $THEME_URL${RESET}\n"
@@ -26,9 +28,14 @@ download_theme() {
     fi
 }
 
-# TODO You're not using these themes. Remove them.
 # Function to check and update iTerm2 theme
 update_iterm2_theme() {
+    # Exit early if THEME_URL is empty
+    if [ -z "$THEME_URL" ]; then
+        printf "${CYAN}Info: THEME_URL is empty. Skipping theme operations.${RESET}\n"
+        return
+    fi
+
     # If local theme doesn't exist, download it
     if [ ! -f "$LOCAL_THEME_PATH" ]; then
         printf "${CYAN}Local theme not found. Downloading...${RESET}\n"
