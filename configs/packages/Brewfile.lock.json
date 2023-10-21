@@ -4,11 +4,11 @@
       "heroku/brew": {
         "revision": "26afdc76a586ed3ed1a38f41a72133e2ff3a9a05"
       },
-      "mongodb/brew": {
-        "revision": "22056afb227d46948b07001f0dfbaa6be3d4fd44"
-      },
       "homebrew/cask-fonts": {
         "revision": "c9413d8bc7e4a716c46d0bb5ecd6bada727bae86"
+      },
+      "mongodb/brew": {
+        "revision": "22056afb227d46948b07001f0dfbaa6be3d4fd44"
       }
     },
     "cask": {
@@ -58,6 +58,12 @@
         "version": "3.13.8",
         "options": {
           "full_name": "flutter"
+        }
+      },
+      "font-jetbrains-mono": {
+        "version": "2.304",
+        "options": {
+          "full_name": "font-jetbrains-mono"
         }
       },
       "google-chrome": {
@@ -130,12 +136,6 @@
         "version": "5.16.2.23409",
         "options": {
           "full_name": "zoom"
-        }
-      },
-      "font-jetbrains-mono": {
-        "version": "2.304",
-        "options": {
-          "full_name": "font-jetbrains-mono"
         }
       }
     },

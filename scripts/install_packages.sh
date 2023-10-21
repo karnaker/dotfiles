@@ -1,53 +1,65 @@
 #!/usr/bin/env sh
 
-# This script handles the installation of software packages
+# This script handles the installation of software packages.
 
-# TODO Should brewfile go in /scripts or /configs?
+# Colors for printing
+CYAN="\033[1;36m"
+RESET="\033[0m"
+
 # Paths
-BREWFILE_PATH="scripts/Brewfile"
+BREWFILE_PATH="$(pwd)/configs/packages/Brewfile"
+
+# Function to check if a command exists
+# $1: Command to check
+command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
 
 # Function to install Homebrew
 install_homebrew() {
     # Check if Homebrew is already installed
-    if [ ! $(which brew) ]; then
-        printf "\033[1;36m==== Installing Homebrew ====\033[0m\n"
+    if ! command_exists brew; then
+        printf "${CYAN}==== Installing Homebrew ====${RESET}\n"
         
-        # Use /bin/bash instead of sh to execute the Homebrew installation script
+        # Use /bin/bash to execute the Homebrew installation script
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
 }
 
 # Function to update Homebrew
 update_homebrew() {
-    printf "\033[1;36m==== Updating Homebrew Recipes ====\033[0m\n"
+    printf "${CYAN}==== Updating Homebrew Recipes ====${RESET}\n"
     brew update
 }
 
 # Function to upgrade formulae
 upgrade_formulae() {
-    printf "\033[1;36m==== Upgrading Installed Formulae ====\033[0m\n"
+    printf "${CYAN}==== Upgrading Installed Formulae ====${RESET}\n"
     brew upgrade
 }
 
 # Function to run brew bundle
 run_brew_bundle() {
-    printf "\033[1;36m==== Installing Packages from Brewfile ====\033[0m\n"
+    printf "${CYAN}==== Installing Packages from Brewfile ====${RESET}\n"
+    
+    # Check if the Brewfile exists
     if [ -f "$BREWFILE_PATH" ]; then
         brew bundle --file="$BREWFILE_PATH"
     else
-        printf "\033[1;31mError: Brewfile does not exist at $BREWFILE_PATH.\033[0m\n"
+        printf "${CYAN}Error: Brewfile does not exist at $BREWFILE_PATH.${RESET}\n"
         exit 1
     fi
 }
 
 # Function to ensure the latest npm version
 ensure_latest_npm() {
-    printf "\033[1;36m==== Ensuring the Latest NPM Version ====\033[0m\n"
+    printf "${CYAN}==== Ensuring the Latest NPM Version ====${RESET}\n"
+    
     # Check if node is installed
-    if which node > /dev/null; then
+    if command_exists node; then
         npm install -g npm
     else
-        printf "\033[1;31mError: Node is not installed. Cannot update NPM.\033[0m\n"
+        printf "${CYAN}Error: Node is not installed. Cannot update NPM.${RESET}\n"
         exit 1
     fi
 }
@@ -55,7 +67,7 @@ ensure_latest_npm() {
 # Main function to orchestrate the package installation
 install_packages() {
     # Inform the user that the installation process is starting
-    printf "\n\033[1;36m==== Starting the Package Installation Process ====\033[0m\n"
+    printf "\n${CYAN}==== Starting the Package Installation Process ====${RESET}\n"
     
     install_homebrew
     update_homebrew
@@ -64,7 +76,7 @@ install_packages() {
     ensure_latest_npm
 
     # Inform the user that the installation process is complete
-    printf "\n\033[1;36m==== Package Installation Complete! ====\033[0m\n"
+    printf "\n${CYAN}==== Package Installation Complete! ====${RESET}\n"
 }
 
 # Call the main function
