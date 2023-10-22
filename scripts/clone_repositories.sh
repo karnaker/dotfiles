@@ -2,9 +2,8 @@
 
 # Repository Cloning Script
 
-# Colors for printing
-CYAN="\033[1;36m"
-RESET="\033[0m"
+# Import print functions
+. "$(pwd)/scripts/print_functions.sh"
 
 # Global Variables
 BASE_DIR="$HOME/repos/github"
@@ -19,7 +18,7 @@ clone_repo() {
     
     # Check if the repo URL ends with .git
     if [[ "$repo_url" != *.git ]]; then
-        printf "${CYAN}Error: Repository URL '$repo_url' doesn't end with '.git'. Skipping...${RESET}\n"
+        print_error "Repository URL '$repo_url' doesn't end with '.git'. Skipping..."
         return
     fi
 
@@ -32,14 +31,14 @@ clone_repo() {
     
     # Check if the repository already exists
     if [ -d "$dest_dir" ]; then
-        printf "${CYAN}Repository already exists: $dest_dir${RESET}\n"
+        print_warning "Repository already exists: $dest_dir"
         return
     fi
 
     # Clone the repository
     git clone "$repo_url" "$dest_dir"
     if [ $? -ne 0 ]; then
-        printf "${CYAN}Failed to clone repository: $repo_url${RESET}\n"
+        print_error "Failed to clone repository: $repo_url"
         return
     fi
 }

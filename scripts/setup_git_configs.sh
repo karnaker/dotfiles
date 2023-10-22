@@ -1,11 +1,7 @@
 #!/usr/bin/env sh
 
-# Colors for printing
-CYAN="\033[1;36m"
-RESET="\033[0m"
-
 # Import our symlink functions
-. scripts/symlink_functions.sh
+. "$(pwd)/scripts/symlink_functions.sh"
 
 # Function to clear any broken symlinks in the specified directory
 clear_broken_links_in_directory() {
@@ -14,13 +10,13 @@ clear_broken_links_in_directory() {
 
     # Check if the directory argument is provided
     if [ -z "$1" ]; then
-        printf "${CYAN}Error: Missing directory argument.${RESET}\n"
+        print_error "Missing directory argument."
         return 1
     fi
 
     local dir="$1"
 
-    printf "${CYAN}==== Checking for broken symlinks in $dir ====${RESET}\n"
+    print_message "Checking for broken symlinks in $dir"
 
     # Call the clear_broken_symlinks function
     clear_broken_symlinks "$dir"
@@ -28,7 +24,7 @@ clear_broken_links_in_directory() {
 
 # Function to symlink git configurations
 setup_git_configs() {
-    printf "${CYAN}==== Setting up Git configurations ====${RESET}\n"
+    print_message "Setting up Git configurations"
     
     # Define the source and target paths for .gitconfig and .gitignore_global
     local gitconfig_source_path="$(pwd)/configs/git/.gitconfig"

@@ -2,9 +2,8 @@
 
 # This script handles the installation of software packages.
 
-# Colors for printing
-CYAN="\033[1;36m"
-RESET="\033[0m"
+# Import print functions
+. "$(pwd)/scripts/print_functions.sh"
 
 # Paths
 BREWFILE_PATH="$(pwd)/configs/packages/Brewfile"
@@ -19,7 +18,7 @@ command_exists() {
 install_homebrew() {
     # Check if Homebrew is already installed
     if ! command_exists brew; then
-        printf "${CYAN}==== Installing Homebrew ====${RESET}\n"
+        print_message "Installing Homebrew"
         
         # Use /bin/bash to execute the Homebrew installation script
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -28,38 +27,38 @@ install_homebrew() {
 
 # Function to update Homebrew
 update_homebrew() {
-    printf "${CYAN}==== Updating Homebrew Recipes ====${RESET}\n"
+    print_message "Updating Homebrew Recipes"
     brew update
 }
 
 # Function to upgrade formulae
 upgrade_formulae() {
-    printf "${CYAN}==== Upgrading Installed Formulae ====${RESET}\n"
+    print_message "Upgrading Installed Formulae"
     brew upgrade
 }
 
 # Function to run brew bundle
 run_brew_bundle() {
-    printf "${CYAN}==== Installing Packages from Brewfile ====${RESET}\n"
+    print_message "Installing Packages from Brewfile"
     
     # Check if the Brewfile exists
     if [ -f "$BREWFILE_PATH" ]; then
         brew bundle --file="$BREWFILE_PATH"
     else
-        printf "${CYAN}Error: Brewfile does not exist at $BREWFILE_PATH.${RESET}\n"
+        print_error "Brewfile does not exist at $BREWFILE_PATH."
         exit 1
     fi
 }
 
 # Function to ensure the latest npm version
 ensure_latest_npm() {
-    printf "${CYAN}==== Ensuring the Latest NPM Version ====${RESET}\n"
+    print_message "Ensuring the Latest NPM Version"
     
     # Check if node is installed
     if command_exists node; then
         npm install -g npm
     else
-        printf "${CYAN}Error: Node is not installed. Cannot update NPM.${RESET}\n"
+        print_error "Node is not installed. Cannot update NPM."
         exit 1
     fi
 }
@@ -67,7 +66,7 @@ ensure_latest_npm() {
 # Main function to orchestrate the package installation
 install_packages() {
     # Inform the user that the installation process is starting
-    printf "\n${CYAN}==== Starting the Package Installation Process ====${RESET}\n"
+    print_message "Starting the Package Installation Process"
     
     install_homebrew
     update_homebrew
@@ -76,7 +75,7 @@ install_packages() {
     ensure_latest_npm
 
     # Inform the user that the installation process is complete
-    printf "\n${CYAN}==== Package Installation Complete! ====${RESET}\n"
+    print_message "Package Installation Complete!"
 }
 
 # Call the main function

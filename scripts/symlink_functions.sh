@@ -1,8 +1,7 @@
 #!/usr/bin/env sh
 
-# Colors for printing
-CYAN="\033[1;36m"
-RESET="\033[0m"
+# Import other scripts
+. "$(pwd)/scripts/print_functions.sh"
 
 # Function to create symbolic links
 create_symlink() {
@@ -12,7 +11,7 @@ create_symlink() {
 
     # Check if both arguments are provided
     if [ -z "$1" ] || [ -z "$2" ]; then
-        printf "${CYAN}Error: Missing arguments. Provide both source and target paths.${RESET}\n"
+        print_error "Missing arguments. Provide both source and target paths."
         return 1
     fi
 
@@ -21,7 +20,7 @@ create_symlink() {
 
     # Check if the source path exists
     if [ ! -e "$source_path" ]; then
-        printf "${CYAN}Error: Source path does not exist: $source_path${RESET}\n"
+        print_error "Source path does not exist: $source_path"
         return 1
     fi
 
@@ -29,25 +28,25 @@ create_symlink() {
     if [ -e "$target_path" ]; then
         # If it's a symlink, remove it
         if [ -L "$target_path" ]; then
-            printf "${CYAN}Removing existing symlink at $target_path${RESET}\n"
+            print_message "Removing existing symlink at $target_path"
             rm "$target_path"
             if [ ! -L "$target_path" ]; then
-                printf "${CYAN}Successfully removed symlink at $target_path${RESET}\n"
+                print_message "Successfully removed symlink at $target_path"
             else
-                printf "${CYAN}Failed to remove symlink at $target_path${RESET}\n"
+                print_error "Failed to remove symlink at $target_path"
                 return 1
             fi
         else
             # If not a symlink, back it up
             local backup_dir="$(dirname "$target_path")/backup"
             local backup_file="$backup_dir/$(basename "$target_path")_$(date +%F_%T)"
-            printf "${CYAN}Backing up existing file/directory at $target_path to $backup_file${RESET}\n"
+            print_message "Backing up existing file/directory at $target_path to $backup_file"
             mkdir -p "$backup_dir"
             mv "$target_path" "$backup_file"
             if [ ! -e "$target_path" ] && [ -e "$backup_file" ]; then
-                printf "${CYAN}Successfully backed up to $backup_file${RESET}\n"
+                print_message "Successfully backed up to $backup_file"
             else
-                printf "${CYAN}Failed to backup $target_path${RESET}\n"
+                print_error "Failed to backup $target_path"
                 return 1
             fi
         fi
@@ -56,9 +55,9 @@ create_symlink() {
     # Create the symlink
     ln -s "$source_path" "$target_path"
     if [ -L "$target_path" ] && [ "$(readlink "$target_path")" = "$source_path" ]; then
-        printf "${CYAN}Successfully created symlink: $target_path -> $source_path${RESET}\n"
+        print_message "Successfully created symlink: $target_path -> $source_path"
     else
-        printf "${CYAN}Failed to create symlink from $target_path to $source_path${RESET}\n"
+        print_error "Failed to create symlink from $target_path to $source_path"
         return 1
     fi
 }
@@ -70,7 +69,7 @@ clear_broken_symlinks() {
 
     # Check if the directory argument is provided
     if [ -z "$1" ]; then
-        printf "${CYAN}Error: Missing directory argument.${RESET}\n"
+        print_error "Missing directory argument."
         return 1
     fi
 
@@ -78,7 +77,7 @@ clear_broken_symlinks() {
     
     # Check if the given directory exists
     if [ ! -d "$dir" ]; then
-        printf "${CYAN}Error: Directory does not exist: $dir${RESET}\n"
+        print_error "Directory does not exist: $dir"
         return 1
     fi
 
@@ -86,9 +85,9 @@ clear_broken_symlinks() {
     find "$dir" -type l ! -exec test -e {} \; -print | while read -r symlink; do
         # Attempt to remove the broken symlink and print the status
         if rm "$symlink"; then
-            printf "${CYAN}Removed broken symlink at: $symlink${RESET}\n"
+            print_message "Removed broken symlink at: $symlink"
         else
-            printf "${CYAN}Failed to remove broken symlink at: $symlink${RESET}\n"
+            print_error "Failed to remove broken symlink at: $symlink"
         fi
     done
 }

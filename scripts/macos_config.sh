@@ -1,17 +1,16 @@
 #!/bin/bash
 
-# Source: ~/.macos — https://mths.be/macos
+# Reference: ~/.macos — https://mths.be/macos
 
-# Colors for printing
-CYAN="\033[1;36m"
-RESET="\033[0m"
+# Import print functions
+. "$(pwd)/scripts/print_functions.sh"
 
 # Customize Computer Name
 CUSTOM_COMPUTER_NAME="vmbp"
 
 # Function to configure macOS settings
 configure_macos() {
-    printf "${CYAN}Starting macOS configuration script...${RESET}\n"
+    print_message "Starting macOS configuration script..."
     
     # Close any open System Preferences panes, to prevent them from overriding
     # settings we’re about to change
@@ -21,7 +20,7 @@ configure_macos() {
     # General UI/UX                                                               #
     ###############################################################################
 
-    printf "${CYAN}Setting computer name to: ${CUSTOM_COMPUTER_NAME}${RESET}\n"
+    print_message "Setting computer name to: ${CUSTOM_COMPUTER_NAME}"
 
     # Set computer name (as done via System Preferences → Sharing)
     sudo scutil --set ComputerName "${CUSTOM_COMPUTER_NAME}"
@@ -574,7 +573,7 @@ configure_macos() {
         killall "${app}" &> /dev/null
     done
 
-    printf "${CYAN}macOS configuration completed successfully.${RESET}\n"
+    print_message "macOS configuration completed successfully."
 }
 
 # Execute the configuration function

@@ -1,24 +1,22 @@
 #!/usr/bin/env sh
 
-# TODO Create a font function script that can be used by other scripts to output text in a uniform way.
-# TODO Update README to include steps from clean machine, before bootstrap.sh is run. Guide on Mac wizard. Do I need to install git? Etc.
+# TODO Update README to include usage steps to go from clean machine, to running bootstrap.sh, to completion. (Guide on Mac wizard. Do I need to install git? Etc.)
+
+# Import our print functions
+. "$(pwd)/scripts/print_functions.sh"
 
 # Main bootstrap script
 
-# Colors for printing
-CYAN="\033[1;36m"
-RESET="\033[0m"
-
 # Function to inform the user about the bootstrap start
 start_bootstrap() {
-    printf "\n${CYAN}==== Starting the Bootstrap Process ====${RESET}\n"
+    print_message "Starting the Bootstrap Process"
 }
 
 # Function to prompt for sudo password at the beginning
 prompt_for_password() {
     # Check if user is not root and then prompt for password
     if [ "$EUID" -ne 0 ]; then
-        printf "${CYAN}Please enter your password for script execution${RESET}\n"
+        print_message "Please enter your password for script execution"
         sudo -v
         # Keep updating the sudo timestamp to avoid asking password again during execution
         while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
@@ -27,7 +25,7 @@ prompt_for_password() {
 
 # Function to grant execute permissions to scripts
 grant_permissions() {
-    printf "${CYAN}==== Granting Execute Permissions to Scripts in ./scripts ====${RESET}\n"
+    print_message "Granting Execute Permissions to Scripts in ./scripts"
     chmod +x "$(pwd)/scripts/"*.sh
 }
 
@@ -36,25 +34,25 @@ execute_script() {
     local script_name="$1"
     local script_path="$(pwd)/scripts/$script_name"
 
-    printf "${CYAN}==== Running $script_name ====${RESET}\n"
+    print_message "Running $script_name"
 
     # Check if the script has execute permissions and exists
     if [ -x "$script_path" ]; then
         sh "$script_path"
         # Check the exit status of the script
         if [ $? -ne 0 ]; then
-            printf "${CYAN}Error: Failed to execute $script_path.${RESET}\n"
+            print_error "Failed to execute $script_path."
             exit 1
         fi
     else
-        printf "${CYAN}Error: $script_path does not have execute permissions or does not exist.${RESET}\n"
+        print_error "$script_path does not have execute permissions or does not exist."
         exit 1
     fi
 }
 
 # Function to inform the user about the bootstrap completion
 end_bootstrap() {
-    printf "\n${CYAN}==== Bootstrap Process Complete! ====${RESET}\n"
+    print_message "Bootstrap Process Complete!"
 }
 
 # Main function to run the bootstrap process

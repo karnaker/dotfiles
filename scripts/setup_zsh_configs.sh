@@ -1,11 +1,7 @@
 #!/usr/bin/env sh
 
-# Colors for printing
-CYAN="\033[1;36m"
-RESET="\033[0m"
-
 # Import our symlink functions
-. scripts/symlink_functions.sh
+. "$(pwd)/scripts/symlink_functions.sh"
 
 # Function to install Oh My Zsh if not already installed
 install_oh_my_zsh() {
@@ -13,13 +9,13 @@ install_oh_my_zsh() {
     
     # Check if Oh My Zsh is already installed
     if [ -d "$oh_my_zsh_dir" ]; then
-        printf "${CYAN}Oh My Zsh is already installed.${RESET}\n"
+        print_message "Oh My Zsh is already installed."
         return
     fi
     
-    printf "${CYAN}Installing Oh My Zsh...${RESET}\n"
+    print_message "Installing Oh My Zsh..."
     if ! sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"; then
-        printf "${CYAN}Error: Oh My Zsh installation failed.${RESET}\n"
+        print_error "Oh My Zsh installation failed."
         exit 1
     fi
 }

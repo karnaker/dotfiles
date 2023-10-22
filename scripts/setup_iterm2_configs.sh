@@ -1,11 +1,7 @@
 #!/usr/bin/env sh
 
-# Colors for printing
-CYAN="\033[1;36m"
-RESET="\033[0m"
-
 # Import our symlink functions
-. scripts/symlink_functions.sh
+. "$(pwd)/scripts/symlink_functions.sh"
 
 # Variables for theme setup
 # We're currently not using an external theme for iTerm2. To use one, populate THEME_URL.
@@ -23,7 +19,7 @@ download_theme() {
     
     # Check the exit status of curl
     if [ $? -ne 0 ]; then
-        printf "${CYAN}Error: Failed to download theme from $THEME_URL${RESET}\n"
+        print_error "Failed to download theme from $THEME_URL"
         exit 1
     fi
 }
@@ -32,16 +28,16 @@ download_theme() {
 update_iterm2_theme() {
     # Exit early if THEME_URL is empty
     if [ -z "$THEME_URL" ]; then
-        printf "${CYAN}Info: THEME_URL is empty. Skipping theme operations.${RESET}\n"
+        print_message "THEME_URL is empty. Skipping theme operations."
         return
     fi
 
     # If local theme doesn't exist, download it
     if [ ! -f "$LOCAL_THEME_PATH" ]; then
-        printf "${CYAN}Local theme not found. Downloading...${RESET}\n"
+        print_message "Local theme not found. Downloading..."
         download_theme
         mv "$TEMP_THEME_PATH" "$LOCAL_THEME_PATH"
-        printf "${CYAN}Theme downloaded successfully to $LOCAL_THEME_PATH${RESET}\n"
+        print_message "Theme downloaded successfully to $LOCAL_THEME_PATH"
         return
     fi
 
@@ -49,11 +45,11 @@ update_iterm2_theme() {
     download_theme
     diff "$TEMP_THEME_PATH" "$LOCAL_THEME_PATH" > /dev/null 2>&1
     if [ $? -ne 0 ]; then
-        printf "${CYAN}Theme at URL has new changes. Updating local theme...${RESET}\n"
+        print_message "Theme at URL has new changes. Updating local theme..."
         mv "$TEMP_THEME_PATH" "$LOCAL_THEME_PATH"
-        printf "${CYAN}Theme updated successfully to $LOCAL_THEME_PATH${RESET}\n"
+        print_message "Theme updated successfully to $LOCAL_THEME_PATH"
     else
-        printf "${CYAN}Local theme is up-to-date. No changes detected.${RESET}\n"
+        print_message "Local theme is up-to-date. No changes detected."
     fi
 
     # Clean up the tmp directory

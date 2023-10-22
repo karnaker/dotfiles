@@ -36,6 +36,7 @@ dotfiles/
 └── README.md                   # Documentation for this repository
 ```
 
+
 ## Scripts
 
 ### `bootstrap.sh`
@@ -57,6 +58,10 @@ Manages the installation of various software packages using Homebrew. It uses th
 ### `scripts/macos_config.sh`
 
 Configures macOS settings and preferences to ensure a customized and consistent environment. The script covers a wide range of settings, including computer name, UI/UX preferences, system defaults, and more.
+
+### `scripts/print_functions.sh`
+
+A utility script that provides functions to print messages, errors, and warnings in a formatted manner. Each function makes use of terminal colors to differentiate message types.
 
 ### `scripts/setup_git_configs.sh`
 
@@ -137,8 +142,13 @@ To set up a new macOS environment using these dotfiles:
 
 ## Contributing
 
-If you wish to contribute to these dotfiles, please fork the repository and submit a pull request.
+Contributions are always welcome! If you'd like to contribute:
+
+1. Fork the repository.
+2. Create a new branch for your changes.
+3. Make the desired changes in your branch.
+4. Submit a pull request for review.
 
 ## License
 
-[MIT License](license)
+These dotfiles are licensed under the MIT License. For more details, please see the [MIT License](license) file.
