@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 
+# TODO Create a font function script that can be used by other scripts to output text in a uniform way.
 # TODO Update README to include steps from clean machine, before bootstrap.sh is run. Guide on Mac wizard. Do I need to install git? Etc.
+
 # Main bootstrap script
 
 # Colors for printing
@@ -18,7 +20,6 @@ prompt_for_password() {
     if [ "$EUID" -ne 0 ]; then
         printf "${CYAN}Please enter your password for script execution${RESET}\n"
         sudo -v
-        
         # Keep updating the sudo timestamp to avoid asking password again during execution
         while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
     fi
@@ -27,137 +28,26 @@ prompt_for_password() {
 # Function to grant execute permissions to scripts
 grant_permissions() {
     printf "${CYAN}==== Granting Execute Permissions to Scripts in ./scripts ====${RESET}\n"
-    chmod +x scripts/*.sh
+    chmod +x "$(pwd)/scripts/"*.sh
 }
 
-# Function to run the system tools installation script
-run_system_tools() {
-    printf "${CYAN}==== Running System Tools Installation Script ====${RESET}\n"
-    if [ -x scripts/system_tools.sh ]; then
-        sh scripts/system_tools.sh
-    else
-        printf "${CYAN}Error: scripts/system_tools.sh does not have execute permissions or does not exist.${RESET}\n"
-        exit 1
-    fi
-}
+# Function to execute a given script
+execute_script() {
+    local script_name="$1"
+    local script_path="$(pwd)/scripts/$script_name"
 
-# Function to run the package installation script
-run_install_packages() {
-    printf "${CYAN}==== Running Package Installation Script ====${RESET}\n"
-    if [ -x scripts/install_packages.sh ]; then
-        sh scripts/install_packages.sh
-    else
-        printf "${CYAN}Error: scripts/install_packages.sh does not have execute permissions or does not exist.${RESET}\n"
-        exit 1
-    fi
-}
-
-# Function to run the Xcode configuration script
-run_xcode_configuration() {
-    printf "${CYAN}==== Running Xcode Configuration Script ====${RESET}\n"
-    if [ -x scripts/configure_xcode.sh ]; then
-        sh scripts/configure_xcode.sh
-    else
-        printf "${CYAN}Error: scripts/configure_xcode.sh does not have execute permissions or does not exist.${RESET}\n"
-        exit 1
-    fi
-}
-
-# Function to run the git configuration setup script
-run_git_config_setup() {
-    printf "${CYAN}==== Running Git Configuration Setup Script ====${RESET}\n"
-    if [ -x scripts/setup_git_configs.sh ]; then
-        sh scripts/setup_git_configs.sh
-    else
-        printf "${CYAN}Error: scripts/setup_git_configs.sh does not have execute permissions or does not exist.${RESET}\n"
-        exit 1
-    fi
-}
-
-# Function to run the iTerm2 configuration setup script
-run_iterm2_config_setup() {
-    printf "${CYAN}==== Running iTerm2 Configuration Setup Script ====${RESET}\n"
-    # Check if the script has execute permissions and exists
-    if [ -x scripts/setup_iterm2_configs.sh ]; then
-        sh scripts/setup_iterm2_configs.sh
-    else
-        printf "${CYAN}Error: scripts/setup_iterm2_configs.sh does not have execute permissions or does not exist.${RESET}\n"
-        exit 1
-    fi
-}
-
-# Function to run the macOS configuration script
-run_macos_config() {
-    printf "${CYAN}==== Running macOS Configuration Script ====${RESET}\n"
-    # Check if the script has execute permissions and exists
-    if [ -x scripts/macos_config.sh ]; then
-        sh scripts/macos_config.sh
-    else
-        printf "${CYAN}Error: scripts/macos_config.sh does not have execute permissions or does not exist.${RESET}\n"
-        exit 1
-    fi
-}
-
-# Function to run the Zsh configuration setup script
-run_zsh_config_setup() {
-    printf "${CYAN}==== Running Zsh Configuration Setup Script ====${RESET}\n"
-    # Check if the script has execute permissions and exists
-    if [ -x scripts/setup_zsh_configs.sh ]; then
-        sh scripts/setup_zsh_configs.sh
-    else
-        printf "${CYAN}Error: scripts/setup_zsh_configs.sh does not have execute permissions or does not exist.${RESET}\n"
-        exit 1
-    fi
-}
-
-# Function to run the VS Code configuration setup script
-run_vscode_config_setup() {
-    # Print a message to inform the user about the VS Code setup process
-    printf "${CYAN}==== Running VS Code Configuration Setup Script ====${RESET}\n"
-
-    # Define the path to the VS Code setup script
-    local vscode_setup_script="scripts/setup_vscode_configs.sh"
+    printf "${CYAN}==== Running $script_name ====${RESET}\n"
 
     # Check if the script has execute permissions and exists
-    if [ -x "$vscode_setup_script" ]; then
-        # Execute the VS Code setup script
-        sh "$vscode_setup_script"
-
-        # Check the exit status of the last command
+    if [ -x "$script_path" ]; then
+        sh "$script_path"
+        # Check the exit status of the script
         if [ $? -ne 0 ]; then
-            # Print an error message if the script execution fails
-            printf "${CYAN}Error: Failed to execute $vscode_setup_script.${RESET}\n"
+            printf "${CYAN}Error: Failed to execute $script_path.${RESET}\n"
             exit 1
         fi
     else
-        # Print an error message if the script does not have execute permissions or does not exist
-        printf "${CYAN}Error: $vscode_setup_script does not have execute permissions or does not exist.${RESET}\n"
-        exit 1
-    fi
-}
-
-# Function to run the clone repositories script
-run_clone_repositories() {
-    # Print a message to inform the user about the repository cloning process
-    printf "${CYAN}==== Running Repository Cloning Script ====${RESET}\n"
-
-    # Define the path to the clone repositories script
-    local clone_repos_script="scripts/clone_repositories.sh"
-
-    # Check if the script has execute permissions and exists
-    if [ -x "$clone_repos_script" ]; then
-        # Execute the clone repositories script
-        sh "$clone_repos_script"
-
-        # Check the exit status of the last command
-        if [ $? -ne 0 ]; then
-            # Print an error message if the script execution fails
-            printf "${CYAN}Error: Failed to execute $clone_repos_script.${RESET}\n"
-            exit 1
-        fi
-    else
-        # Print an error message if the script does not have execute permissions or does not exist
-        printf "${CYAN}Error: $clone_repos_script does not have execute permissions or does not exist.${RESET}\n"
+        printf "${CYAN}Error: $script_path does not have execute permissions or does not exist.${RESET}\n"
         exit 1
     fi
 }
@@ -172,15 +62,15 @@ main() {
     start_bootstrap
     prompt_for_password
     grant_permissions
-    run_system_tools
-    run_install_packages
-    run_xcode_configuration
-    run_git_config_setup
-    run_iterm2_config_setup
-    run_macos_config
-    run_zsh_config_setup
-    run_vscode_config_setup
-    run_clone_repositories
+    execute_script "system_tools.sh"
+    execute_script "install_packages.sh"
+    execute_script "configure_xcode.sh"
+    execute_script "setup_git_configs.sh"
+    execute_script "setup_iterm2_configs.sh"
+    execute_script "macos_config.sh"
+    execute_script "setup_zsh_configs.sh"
+    execute_script "setup_vscode_configs.sh"
+    execute_script "clone_repositories.sh"
     end_bootstrap
 }
 
