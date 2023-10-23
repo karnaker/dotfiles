@@ -273,7 +273,7 @@ configure_macos() {
     defaults write com.apple.dock persistent-apps -array
 
     # Show only open applications in the Dock
-    #defaults write com.apple.dock static-only -bool true
+    defaults write com.apple.dock static-only -bool true
 
     # Don’t animate opening applications from the Dock
     defaults write com.apple.dock launchanim -bool false
@@ -402,25 +402,6 @@ configure_macos() {
     defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
 
     ###############################################################################
-    # Mail                                                                        #
-    ###############################################################################
-
-    # Disable send and reply animations in Mail.app
-    defaults write com.apple.mail DisableReplyAnimations -bool true
-    defaults write com.apple.mail DisableSendAnimations -bool true
-
-    # Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
-    defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
-
-    # Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
-    defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" "@\U21a9"
-
-    # Display emails in threaded mode, sorted by date (oldest at the top)
-    defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
-    defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
-    defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
-
-    ###############################################################################
     # Terminal & iTerm 2                                                          #
     ###############################################################################
 
@@ -529,19 +510,6 @@ configure_macos() {
     
     # Prevent Photos from opening automatically when devices are plugged in
     defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
-
-    ###############################################################################
-    # Messages                                                                    #
-    ###############################################################################
-    
-    # Disable automatic emoji substitution (i.e. use plain text smileys)
-    defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
-
-    # Disable smart quotes as it’s annoying for messages that contain code
-    defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
-
-    # Disable continuous spell checking
-    defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
 
     ###############################################################################
     # Google Chrome & Google Chrome Canary                                        #
