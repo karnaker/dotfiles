@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-# TODO Update README to include usage steps to go from clean machine, to running bootstrap.sh, to completion. (Guide on Mac wizard. Do I need to install git? Etc.)
-
 # Import our print functions
 . "$(pwd)/scripts/print_functions.sh"
 
