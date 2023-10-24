@@ -133,9 +133,9 @@ After running the bootstrap script and setting up the essential tools and config
      4. Select `Import JSON Profiles` and choose your profile (typically found in `configs/iterm2/iterm2_profile_base.json`).
      5. Set the imported profile as the default.
 
-   - **1Password**: Open the application, log in with your credentials, and set up any necessary integrations or browser extensions.
-     
    - **Rectangle**: Launch the app and configure your preferred window snapping shortcuts.
+     
+   - **1Password**: Open the application, log in with your credentials, and set up any necessary integrations or browser extensions.
      
    - **Google Chrome**: Sign in to sync your bookmarks, extensions, and other settings. Remember to install essential extensions and configure them as per your requirements.
 

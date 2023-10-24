@@ -5,7 +5,7 @@
         "revision": "26afdc76a586ed3ed1a38f41a72133e2ff3a9a05"
       },
       "homebrew/cask-fonts": {
-        "revision": "a4830ce98072b7ec4d878cb1d12801b13c9633f9"
+        "revision": "3bf62dfa4b04f21319683e806823f41b5f0df63f"
       },
       "mongodb/brew": {
         "revision": "22056afb227d46948b07001f0dfbaa6be3d4fd44"
@@ -73,7 +73,7 @@
         }
       },
       "google-drive": {
-        "version": "82.0.1",
+        "version": "83.0.1",
         "options": {
           "full_name": "google-drive"
         }
@@ -471,12 +471,12 @@
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.1.16",
+        "HOMEBREW_VERSION": "4.1.17",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
-        "CLT": "",
+        "CLT": "15.0.0.0.1.1694021235",
         "Xcode": "15.0.1",
-        "macOS": "13.5.2"
+        "macOS": "13.6"
       }
     }
   }
