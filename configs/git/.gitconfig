@@ -1,0 +1,51 @@
+# Enables colorized output for Git for commands that support it.
+[color]
+	ui = auto
+
+# Core settings
+[core]
+	# Uses VS Code as the default editor for Git, opening in a new window and waiting for the editor to close.
+	editor = "code --wait"
+	# Points to the global gitignore file.
+	excludesfile = ~/.gitignore_global
+
+# Sets the default branch name to 'main' when initializing a new repository.
+[init]
+	defaultBranch = main
+
+# Push settings
+[push]
+	# The default push strategy which pushes only the current branch to the corresponding upstream branch.
+	default = simple
+
+# User settings. Modify these to your actual name and email.
+[user]
+	name = Vikram Karnaker
+	email = vkarnaker@gmail.com
+
+# Aliases for simplifying some common Git commands.
+[alias]
+	# Show concise log graph.
+	lg = log --oneline --all --graph --decorate
+	# Show detailed log graph.
+	lgd = log --all --graph --pretty=format:'%C(auto)%h %d %s %C(magenta)%an, %C(green)%ar'
+	# Check out branches more easily.
+	co = checkout
+	# Create a new branch.
+	nb = checkout -b
+	# List all branches.
+	br = branch -a
+	# Show status
+	st = status
+
+# Configuration for diff tool. Use your preferred diff tool.
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+
+# Configuration for merge tool. Use your preferred merge tool.
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait $MERGED

@@ -1,135 +1,287 @@
 # Dotfiles
 
-Based on [Rosco Kalis' dotfiles](https://github.com/rkalis/dotfiles/), but customized for my preferences. See:
-* [Dotfiles: automating macOS system configuration](https://kalis.me/dotfiles-automating-macos-system-configuration/)
+This repository contains a collection of configuration files and scripts to set up a new macOS environment. It includes configurations for various tools, packages, and system settings, ensuring a consistent and automated setup experience.
+
+## Dependencies
+
+- Active internet connection
+- macOS version (Ventura 13.5.2 and above)
 
 ## Usage
 
 ### If it's the first time setting up your Mac
 
-1. Language: English
-1. Select Your Country or Region: United States
-1. Accessibility
-   1. Vision
-      1. Appearance: Dark
-1. Select Your Wi-Fi Network
-1. Sign In With Your Apple ID
-1. Account Name: vikram
-1. Analytics: Do not share any information
-1. Improve Siri & Dictation: Not Now
-1. FileVault Disk Encryption: Turn on FileVault disk encryption
-1. iCloud Keychain: Set up later
-1. Apple Pay: Set up later
+Follow the instructions below for a smooth initial setup of macOS:
 
-### Update software
+1. **Language:** English
+2. **Select Your Country or Region:** United States
+3. **Accessibility:** 
+   1. **Vision**
+      1. **Appearance:** Dark
+4. **Select Your Wi-Fi Network**
+5. **Sign In With Your Apple ID**
+6. **Account Name:** vikram (Replace with your desired account name)
+7. **Analytics:** Do not share any information
+8. **Improve Siri & Dictation:** Not Now
+9. **FileVault Disk Encryption:** Turn on FileVault disk encryption
+10. **iCloud Keychain:** Set up later
+11. **Apple Pay:** Set up later
 
-1. Run Software Update, and ensure that the operating system is at the latest point release.
+### Start with an up-to-date system:
 
-### Run dotfile scrips
+1. Click on the Apple logo in the top-left corner of the screen.
+2. Select "System Settings."
+3. Navigate to "Software Update."
+4. If updates are available, click "Upgrade Now" to install them. This may require a restart.
 
-1. Generate new SSH keys and add them to your GitHub account
-    1. See: [Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
-    1. Alternatively, restore your safely backed up SSH keys to `~/.ssh/`
-2. Install Homebrew and git
+### SSH Key Setup:
+
+Before you start cloning repositories or pushing changes to GitHub, you'll need to set up SSH keys:
+
+1. [Check for existing SSH keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys)
+2. [Generate a new SSH key and add it to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+3. [Add your SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+4. [Test your SSH connection](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection)
+5. Alternatively, restore your safely backed-up SSH keys
+
+### Installing Essential Tools: Homebrew and Git
+
+Before we proceed with the main setup, it's essential to install some foundational tools that our scripts and configurations rely on. Homebrew is a package manager for macOS that makes it easy to install software, and Git is a distributed version control system.
+
+1. **Install Homebrew**:
 
     ```zsh
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
 
-    1. Follow any next steps advised by Homebrew. For example, on Apple Silicon machines, Homebrew will provide commands to add Homebrew to your PATH: Run these two commands in your terminal to add Homebrew to your PATH
-        ```zsh
-        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/vikram/.zprofile
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-        ```
+    - **Note**: After running the above command, Homebrew might provide additional instructions, especially if you're on an Apple Silicon machine. Make sure to follow any steps advised by Homebrew.
+
+    For Apple Silicon machines, you may need to add Homebrew to your PATH:
+
+    ```zsh
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    ```
+
+2. **Install Git**:
 
     ```zsh
     brew install git
     ```
 
-3. Clone this repository
+    - **Note**: Installing Git via Homebrew ensures you have the latest version, and it's easy to update in the future.
 
-    ```bash
-    git clone git@github.com:karnaker/dotfiles.git
+### Setting up your development environment
+
+1. **Prepare the dotfiles directory**:
+   Ensure that the target directory exists. If it doesn't, create it. 
+   
+   ```zsh
+   # Create the directory structure if it doesn't exist
+   mkdir -p ~/repos/github/karnaker
+   ```
+
+2. **Clone the dotfiles repository**:
+   Clone this repository to the desired location on your local machine.
+
+   ```zsh
+   # Navigate to the parent directory
+   cd ~/repos/github/karnaker
+
+   # Clone the repository via SSH
+   git clone git@github.com:karnaker/dotfiles.git
+   ```
+
+3. **Navigate to the directory**:
+   
+   ```zsh
+   cd dotfiles
+   ```
+
+4. **Ensure script permissions**:
+   Make sure the bootstrap script is executable.
+
+   ```zsh
+   # Give the script execute permissions
+   chmod +x bootstrap.sh
+   ```
+
+5. **Run the bootstrap script**:
+
+   ```zsh
+   ./bootstrap.sh
+   ```
+
+### Post-Installation Steps
+
+After running the bootstrap script and setting up the essential tools and configurations, there are some post-installation steps that require manual intervention:
+
+1. **Restart Your Mac**:
+
+    ```zsh
+    sudo shutdown -r now
     ```
-    
-4. Run the `bootstrap.sh` script
-    1. Alternatively, only run the `setup.sh` scripts in specific subfolders if you don't need everything
-5. Restart your Mac
-6. (Optional) Point your Alfred preference sync to a backed up folder
-7. Login to applications, enter license keys, set preferences
-    1. iTerm2: Import my JSON profile and set as default
-    1. 1password
-    1. Rectangle
-    1. Google Chrome
-    1. Google Drive
-    1. Etc.
 
-## Customisation
-I strongly encourage you to play around with the configurations, and add or remove features.
-If you would like to use these dotfiles for yourself, I'd recommend changing at least the following:
+2. **Login to Applications, Enter License Keys, and Set Preferences**:
 
-#### Git
-* The .gitconfig file includes my [user] config, replace these with your own user name and email
+   Here are some common applications you might want to configure:
 
-#### MacOS
-* At the top of the setup.sh file, my computer name is set, replace this with your own computer name
+   - **iTerm2**: Import your JSON profile and set it as default. To do this:
+     1. Open iTerm2.
+     2. Navigate to iTerm -> Settings or press `Cmd + ,`.
+     3. Under the `Profiles` tab, click on the `Other Actions` dropdown.
+     4. Select `Import JSON Profiles` and choose your profile (typically found in `configs/iterm2/iterm2_profile_base.json`).
+     5. Set the imported profile as the default.
 
-#### Packages
-This folder is a collection of the programs and utilities I use frequently. These lists can easily be amended to your liking.
+   - **Rectangle**: Launch the app and configure your preferred window snapping shortcuts.
+     
+   - **1Password**: Open the application, log in with your credentials, and set up any necessary integrations or browser extensions.
+     
+   - **Google Chrome**: Sign in to sync your bookmarks, extensions, and other settings. Remember to install essential extensions and configure them as per your requirements.
 
-#### Repos
-This folder is a collection of my own repos, some of which are even private. The existing lists can easily be edited or replaced by custom lists.
+   - **Google Drive**: Log in and set up sync preferences.
+     
+   - **Etc.**: Any other apps you use regularly should be set up at this point. This could include communication tools like Slack, development tools like Postman, or design tools like Figma. Remember to log in, provide any necessary license keys, and configure them as per your needs.
 
-## Contents
-### Root (/)
-* bootstrap.sh - Calls all setup.sh scripts
+**Note**: These post-installation steps are a general guide and might vary based on personal preferences and specific software versions. It's crucial to refer to the official documentation or support channels of individual apps for detailed setup instructions.
 
-### Git (git/)
-* setup.sh - Symlinks all git files to `~/`
-* .gitignore_global - Contains global gitignores
-* .gitconfig - Sets several global Git variables
+## Directory Structure
 
-### Iterm2 (iterm2/)
-* vk mbp.json - iTerm2 profile
+```plaintext
+dotfiles/
+│
+├── bootstrap.sh                # The main bootstrap file
+│
+├── configs/                    # Directory for configuration files
+│   ├── git/
+│   │   ├── .gitconfig
+│   │   ├── .gitignore_global
+│   ├── iterm2/
+│   │   ├── iterm2_profile_base.json
+│   │   ├── themes/
+│   ├── packages/
+│   │   ├── Brewfile
+│   │   ├── Brewfile.lock.json  # Lock file generated by Homebrew
+│   ├── repos/                  # Directory containing lists of repositories to clone
+│   │   ├── agapichq.txt
+│   │   ├── karnaker.txt
+│   ├── vscode/
+│   │   ├── settings.json
+│   │   ├── extensions.txt
+│   ├── zsh/
+│   │   ├── .zshrc
+│   ├── ...
+│
+├── scripts/                    # Directory for various scripts
+│   ├── install_packages.sh
+│   ├── ...                     # Other scripts can go here
+│
+└── README.md                   # Documentation for this repository
+```
 
-### macOS Preferences (macos/)
-* setup.sh - Executes a long list of commands pertaining to macOS Preferences
+## Scripts
 
-### Miniconda (miniconda/)
-* postsetup.sh - Executes commands to set up shell for Miniconda
+### `bootstrap.sh`
 
-### Packages (packages/)
-* setup.sh - Installs the contents of the .list files and the Brewfile
+The main script that orchestrates the entire setup process. It ensures permissions are granted, runs system tool installations, package installations, Xcode configurations, Git configurations, iTerm2 configurations, macOS configuration, Zsh configuration, VS Code configuration, and also clones repositories from provided lists.
 
-### Repositories (repos/)
-* setup.sh - Clones the repositories in the .list files at the corresponding locations
+### `scripts/clone_repositories.sh`
 
-### Helper Scripts (scripts/)
-* functions.sh - Contains helper functions for symlinking files and printing progress messages
+Handles the process of cloning repositories. It uses two lists of repositories: one for personal repositories (`configs/repos/karnaker.txt`) and one for work repositories (`configs/repos/agapichq.txt`).
 
-### Visual Studio Code (vscode/)
-* setup.sh - Symlinks the settings.json file to `~/Library/Application Support/Code/User`
-* settings.json - Contains user settings for Visual Studio Code
+### `scripts/configure_xcode.sh`
 
-### Zsh (zsh/)
-* setup.sh - Installs Oh My Zsh and Powerline fonts. Symlinks all zsh files to their corresponding location in `~`
-* .zshrc - zsh configuration
+Configures Xcode after its installation via the App Store. It sets the default command-line tools and accepts the license agreement.
 
-## Known Issues
+### `scripts/install_packages.sh`
 
-1. macos > setup.sh :
-    1. Error thrown when running: `defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2`
-    1. macos setup.sh script exits during first run
-1. repos > setup.sh : Prints "failed to clone" even though repos are cloned successfully
+Manages the installation of various software packages using Homebrew. It uses the `configs/packages/Brewfile` to determine which packages to install. The `Brewfile.lock.json` is generated after a successful `brew bundle` execution to capture the current environment. It aids in debugging if subsequent `brew bundle` runs fail by comparing with previous states.
 
-## References
-1. [How to Set up an Apple Mac for Software Development](https://www.stuartellis.name/articles/mac-setup/)
-1. [GitHub does dotfiles](https://dotfiles.github.io/)
-1. [Dotfiles: automating macOS system configuration](https://kalis.me/dotfiles-automating-macos-system-configuration/)
-    1. [rkalis/dotfiles](https://github.com/rkalis/dotfiles)
-1. [Wes Bos' Command Line Power User Course](https://courses.wesbos.com/account/access/6208a5fd4407c61ab3ce1368)
-1. [Oh My Zsh](https://ohmyz.sh/)
-    1. [ohmyzsh/ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
-1. [Setup macOS 2021 For Optimal Command Line Productivity](https://matt.sh/setup-2021-late)
-1. [dockutil](https://github.com/kcrawford/dockutil)
-    1. [Example use of dockutil in dotfiles by Grsmto](https://github.com/Grsmto/dotfiles/blob/master/macos/dock.sh)
+### `scripts/macos_config.sh`
+
+Configures macOS settings and preferences to ensure a customized and consistent environment. The script covers a wide range of settings, including computer name, UI/UX preferences, system defaults, and more.
+
+### `scripts/print_functions.sh`
+
+A utility script that provides functions to print messages, errors, and warnings in a formatted manner. Each function makes use of terminal colors to differentiate message types.
+
+### `scripts/setup_git_configs.sh`
+
+Sets up Git configurations, including aliases and user information, and symlinks Git-related files.
+
+### `scripts/setup_iterm2_configs.sh`
+
+Downloads and updates iTerm2 themes, symlinks iTerm2 profile, and manages iTerm2 configurations.
+
+### `scripts/setup_vscode_configs.sh`
+
+Handles the configuration of VS Code. This includes symlinking the `settings.json` for VS Code preferences and installing extensions listed in `extensions.txt`.
+
+### `scripts/setup_zsh_configs.sh`
+
+Configures Zsh, installs Oh My Zsh, and symlinks the `.zshrc` file.
+
+### `scripts/symlink_functions.sh`
+
+This script provides utility functions for handling symbolic links.
+
+### `scripts/system_tools.sh`
+
+Handles the installation of essential system tools like XCode Command Line Tools and Rosetta (for M1 Macs).
+
+## Configurations
+
+Configuration files are stored in the `configs/` directory. These files are used to set up various tools and applications, ensuring they operate with preferred settings.
+
+### Git Configurations (`configs/git/`)
+
+- `.gitconfig`: Contains global configurations for Git. It specifies user details, aliases, core settings, diff and merge tool settings, and more. This file is meant to be symlinked to the user's home directory.
+
+- `.gitignore_global`: A global `.gitignore` file that specifies patterns for files and directories that should be ignored across all Git repositories. This is especially useful for ignoring system-specific files, such as `.DS_Store` on macOS. This file is meant to be symlinked to the user's home directory.
+
+### iTerm2 Configurations (`configs/iterm2/`)
+
+- `iterm2_profile_base.json`: Contains the base profile settings for iTerm2. It defines settings like text colors, working directory, blinking cursor settings, etc. This profile can be imported into iTerm2.
+
+- `themes/`: This directory can contain iTerm2 color themes. Themes can be imported into iTerm2 to change the appearance of the terminal.
+
+### Package Configurations (`configs/packages/`)
+
+- `Brewfile`: A list of software packages and applications for Homebrew to install.
+
+- `Brewfile.lock.json`: The `Brewfile.lock.json` is a lock file created by Homebrew to ensure uniform package installations. It's generated after a successful `brew bundle` run, capturing the environment at that point.
+
+### Repositories Configurations (`configs/repos/`)
+
+- `agapichq.txt`: Contains a list of work repositories to be cloned.
+
+- `karnaker.txt`: Contains a list of personal repositories to be cloned.
+  
+### VS Code Configurations (`configs/vscode/`)
+
+- `settings.json`: Contains various settings for the VS Code editor. These include preferences related to appearance, plugins, and other behaviors.
+  
+- `extensions.txt`: A list of VS Code extensions to be installed. Each line represents the identifier of an extension available on the VS Code marketplace.
+
+### Zsh Configurations (`configs/zsh/`)
+
+- `.zshrc`: The configuration file for Zsh. It specifies the path to the Oh My Zsh installation, sets the theme, determines auto-update behavior, and lists the desired plugins. This file should be symlinked to the user's home directory.
+
+## Important Notes
+
+- The bootstrap process will prompt for the sudo password to ensure necessary permissions.
+- Make sure to review the scripts and configurations before running them, especially if you're using this on a system with existing configurations.
+- The setup process is designed to be idempotent. Running it multiple times should not produce different results.
+
+## Contributing
+
+Contributions are always welcome! If you'd like to contribute:
+
+1. Fork the repository.
+2. Create a new branch for your changes.
+3. Make the desired changes in your branch.
+4. Submit a pull request for review.
+
+## License
+
+These dotfiles are licensed under the MIT License. For more details, please see the [MIT License](license) file.

@@ -1,0 +1,44 @@
+{
+    
+    // Enable bracket pair colorization for better code readability.
+    "editor.bracketPairColorization.enabled": true,
+
+    // Set the font family for the code editor to Jetbrains Mono.
+    "editor.fontFamily": "Jetbrains Mono",
+
+    // Disable font ligatures for a standard code appearance.
+    "editor.fontLigatures": false,
+
+    // Increase the font size to 16 for improved visibility.
+    "editor.fontSize": 16,
+
+    // Disable font variations for consistency.
+    "editor.fontVariations": false,
+
+    // Use normal font weight for better legibility.
+    "editor.fontWeight": "normal",
+
+    // Set the tab size to 4 spaces for code indentation.
+    "editor.tabSize": 4,
+
+    // Enable auto-save with a delay for files.
+    "files.autoSave": "afterDelay",
+
+    // Enable auto-save with a delay of 1000 milliseconds (1 second).
+    "files.autoSaveDelay": 1000,
+
+    // Configure the Python language server to use "Pylance" for enhanced Python support.
+    "python.languageServer": "Pylance",
+
+    // Configure the integrated terminal font family to Jetbrains Mono.
+    "terminal.integrated.fontFamily": "Jetbrains Mono",
+
+    // Increase the integrated terminal font size for better readability.
+    "terminal.integrated.fontSize": 16,
+
+    // Use normal font weight for terminal text.
+    "terminal.integrated.fontWeight": "normal",
+
+    // Set the color theme for the workbench to "Dark Modern Theme".
+    "workbench.colorTheme": "Dark Modern Theme"
+}

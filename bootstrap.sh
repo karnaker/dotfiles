@@ -1,43 +1,74 @@
-#! /usr/bin/env sh
+#!/usr/bin/env sh
 
-DIR=$(dirname "$0")
-cd "$DIR"
+# Import our print functions
+. "$(pwd)/scripts/print_functions.sh"
 
-. scripts/functions.sh
+# Main bootstrap script
 
-info "Prompting for sudo password..."
-if sudo -v; then
-    # Keep-alive: update existing `sudo` time stamp until `setup.sh` has finished
-    while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-    success "Sudo credentials updated."
-else
-    error "Failed to obtain sudo credentials."
-fi
+# Function to inform the user about the bootstrap start
+start_bootstrap() {
+    print_message "Starting the Bootstrap Process"
+}
 
-info "Installing XCode command line tools..."
-if xcode-select --print-path &>/dev/null; then
-    success "XCode command line tools already installed."
-elif xcode-select --install &>/dev/null; then
-    success "Finished installing XCode command line tools."
-else
-    error "Failed to install XCode command line tools."
-fi
+# Function to prompt for sudo password at the beginning
+prompt_for_password() {
+    # Check if user is not root and then prompt for password
+    if [ "$EUID" -ne 0 ]; then
+        print_message "Please enter your password for script execution"
+        sudo -v
+        # Keep updating the sudo timestamp to avoid asking password again during execution
+        while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+    fi
+}
 
-info "Installing Rosetta..."
-sudo softwareupdate --install-rosetta
+# Function to grant execute permissions to scripts
+grant_permissions() {
+    print_message "Granting Execute Permissions to Scripts in ./scripts"
+    chmod +x "$(pwd)/scripts/"*.sh
+}
 
-info "Make all setup.sh and postsetup.sh files in current directory and subfolders executable"
-find . -name "*setup.sh" -exec chmod +x {} \;
+# Function to execute a given script
+execute_script() {
+    local script_name="$1"
+    local script_path="$(pwd)/scripts/$script_name"
 
-# Package control must be executed first in order for the rest to work
-./packages/setup.sh
+    print_message "Running $script_name"
 
-find * -name "setup.sh" -not -wholename "packages*" | while read setup; do
-    ./$setup
-done
+    # Check if the script has execute permissions and exists
+    if [ -x "$script_path" ]; then
+        sh "$script_path"
+        # Check the exit status of the script
+        if [ $? -ne 0 ]; then
+            print_error "Failed to execute $script_path."
+            exit 1
+        fi
+    else
+        print_error "$script_path does not have execute permissions or does not exist."
+        exit 1
+    fi
+}
 
-find * -name "postsetup.sh" | while read setup; do
-    ./$setup
-done
+# Function to inform the user about the bootstrap completion
+end_bootstrap() {
+    print_message "Bootstrap Process Complete!"
+}
 
-success "Finished installing Dotfiles"
+# Main function to run the bootstrap process
+main() {
+    start_bootstrap
+    prompt_for_password
+    grant_permissions
+    execute_script "system_tools.sh"
+    execute_script "install_packages.sh"
+    execute_script "configure_xcode.sh"
+    execute_script "setup_git_configs.sh"
+    execute_script "setup_iterm2_configs.sh"
+    execute_script "macos_config.sh"
+    execute_script "setup_zsh_configs.sh"
+    execute_script "setup_vscode_configs.sh"
+    execute_script "clone_repositories.sh"
+    end_bootstrap
+}
+
+# Call the main function
+main

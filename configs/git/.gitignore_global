@@ -1,0 +1,31 @@
+# Global .gitignore file for macOS and VS Code
+
+# === macOS-specific ===
+
+# System-level files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r (CR)
+Icon
+
+# Thumbnail cache files
+._*
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+
+# === VS Code specific ===
+
+# VSCode directory
+.vscode/*
