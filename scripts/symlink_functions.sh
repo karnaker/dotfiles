@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-# Import other scripts
+# Import print functions
 . "$(pwd)/scripts/print_functions.sh"
 
 # Function to create symbolic links
@@ -62,32 +62,74 @@ create_symlink() {
     fi
 }
 
-clear_broken_symlinks() {
-    # This function finds and removes broken symlinks within a given directory.
+# Function to check the exit status of a command and handle errors
+check_exit_status() {
     # Parameters:
-    # $1: Directory to search for broken symlinks.
+    # $1: Exit status of the previously executed command
+    # $2: Success message
+    # $3: Error message
+
+    local exit_status="$1"
+    local success_message="$2"
+    local error_message="$3"
+
+    # If the command was successful
+    if [ "$exit_status" -eq 0 ]; then
+        print_message "$success_message"
+    else
+        print_error "$error_message"
+        return 1
+    fi
+}
+
+# Function to remove a broken symlink
+remove_broken_symlink() {
+    # Parameters:
+    # $1: Path to the broken symlink
+
+    local symlink_path="$1"
+    rm "$symlink_path"
+
+    # Check if the removal was successful and print the status
+    check_exit_status $? "Removed broken symlink at: $symlink_path" "Failed to remove broken symlink at: $symlink_path"
+}
+
+# Function to check if a symlink is broken
+is_broken_symlink() {
+    # Parameters:
+    # $1: Path to the symlink
+
+    local symlink_path="$1"
+
+    # Test if the symlink is broken
+    [ ! -e "$symlink_path" ] && [ -L "$symlink_path" ]
+}
+
+# Function to clear broken symlinks from a given directory (not recursive)
+clear_broken_symlinks() {
+    # Parameters:
+    # $1: Parent directory to search for broken symlinks
+
+    local parent_dir="$1"
 
     # Check if the directory argument is provided
-    if [ -z "$1" ]; then
+    if [ -z "$parent_dir" ]; then
         print_error "Missing directory argument."
         return 1
     fi
 
-    local dir="$1"
-    
     # Check if the given directory exists
-    if [ ! -d "$dir" ]; then
-        print_error "Directory does not exist: $dir"
+    if [ ! -d "$parent_dir" ]; then
+        print_error "Directory does not exist: $parent_dir"
         return 1
     fi
 
-    # Find broken symlinks in the given directory
-    find "$dir" -type l ! -exec test -e {} \; -print | while read -r symlink; do
-        # Attempt to remove the broken symlink and print the status
-        if rm "$symlink"; then
-            print_message "Removed broken symlink at: $symlink"
-        else
-            print_error "Failed to remove broken symlink at: $symlink"
+    # List all files and directories in the given directory
+    for entry in "$parent_dir"/*; do
+        # If the entry is a broken symlink
+        if is_broken_symlink "$entry"; then
+            # Attempt to remove the broken symlink
+            remove_broken_symlink "$entry"
         fi
     done
 }
