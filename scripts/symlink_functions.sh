@@ -3,133 +3,104 @@
 # Import print functions
 . "$(pwd)/scripts/print_functions.sh"
 
-# Function to create symbolic links
+# Create symbolic links with error checking and backup handling
 create_symlink() {
     # Parameters:
     # $1: Source file or directory
     # $2: Target file or directory
 
-    # Check if both arguments are provided
-    if [ -z "$1" ] || [ -z "$2" ]; then
+    local source="$1"
+    local target="$2"
+
+    verify_arguments "$source" "$target" || return 1
+    handle_existing_target "$target" || return 1
+    link_source_to_target "$source" "$target"
+}
+
+# Check if both source and target arguments are provided
+verify_arguments() {
+    local source="$1"
+    local target="$2"
+
+    if [ -z "$source" ] || [ -z "$target" ]; then
         print_error "Missing arguments. Provide both source and target paths."
         return 1
-    fi
-
-    local source_path="$1"
-    local target_path="$2"
-
-    # Check if the source path exists
-    if [ ! -e "$source_path" ]; then
-        print_error "Source path does not exist: $source_path"
+    elif [ ! -e "$source" ]; then
+        print_error "Source path does not exist: $source"
         return 1
     fi
+}
 
-    # If the target path already exists
-    if [ -e "$target_path" ]; then
-        # If it's a symlink, remove it
-        if [ -L "$target_path" ]; then
-            print_message "Removing existing symlink at $target_path"
-            rm "$target_path"
-            if [ ! -L "$target_path" ]; then
-                print_message "Successfully removed symlink at $target_path"
-            else
-                print_error "Failed to remove symlink at $target_path"
-                return 1
-            fi
+# Handle existing target by removing or backing up
+handle_existing_target() {
+    local target="$1"
+
+    if [ -e "$target" ]; then
+        if [ -L "$target" ]; then
+            remove_symlink "$target"
         else
-            # If not a symlink, back it up
-            local backup_dir="$(dirname "$target_path")/backup"
-            local backup_file="$backup_dir/$(basename "$target_path")_$(date +%F_%T)"
-            print_message "Backing up existing file/directory at $target_path to $backup_file"
-            mkdir -p "$backup_dir"
-            mv "$target_path" "$backup_file"
-            if [ ! -e "$target_path" ] && [ -e "$backup_file" ]; then
-                print_message "Successfully backed up to $backup_file"
-            else
-                print_error "Failed to backup $target_path"
-                return 1
-            fi
+            backup_target "$target"
         fi
     fi
-
-    # Create the symlink
-    ln -s "$source_path" "$target_path"
-    if [ -L "$target_path" ] && [ "$(readlink "$target_path")" = "$source_path" ]; then
-        print_message "Successfully created symlink: $target_path -> $source_path"
-    else
-        print_error "Failed to create symlink from $target_path to $source_path"
-        return 1
-    fi
 }
 
-# Function to check the exit status of a command and handle errors
-check_exit_status() {
-    # Parameters:
-    # $1: Exit status of the previously executed command
-    # $2: Success message
-    # $3: Error message
+# Remove an existing symlink
+remove_symlink() {
+    local target="$1"
 
-    local exit_status="$1"
-    local success_message="$2"
-    local error_message="$3"
-
-    # If the command was successful
-    if [ "$exit_status" -eq 0 ]; then
-        print_message "$success_message"
-    else
-        print_error "$error_message"
-        return 1
-    fi
+    print_message "Removing existing symlink at $target"
+    rm "$target" && print_message "Removed symlink at $target" || print_error "Failed to remove symlink at $target"
 }
 
-# Function to remove a broken symlink
-remove_broken_symlink() {
-    # Parameters:
-    # $1: Path to the broken symlink
+# Backup the existing target file or directory
+backup_target() {
+    local target="$1"
+    local backup_dir="$(dirname "$target")/backup"
+    local backup_file="$backup_dir/$(basename "$target")_$(date +%F_%T)"
 
-    local symlink_path="$1"
-    rm "$symlink_path"
-
-    # Check if the removal was successful and print the status
-    check_exit_status $? "Removed broken symlink at: $symlink_path" "Failed to remove broken symlink at: $symlink_path"
+    print_message "Backing up existing file/directory at $target to $backup_file"
+    mkdir -p "$backup_dir" && mv "$target" "$backup_file" && print_message "Backed up to $backup_file" || print_error "Failed to backup $target"
 }
 
-# Function to check if a symlink is broken
-is_broken_symlink() {
-    # Parameters:
-    # $1: Path to the symlink
+# Create a symbolic link from source to target
+link_source_to_target() {
+    local source="$1"
+    local target="$2"
 
-    local symlink_path="$1"
-
-    # Test if the symlink is broken
-    [ ! -e "$symlink_path" ] && [ -L "$symlink_path" ]
+    ln -s "$source" "$target" && print_message "Created symlink: $target -> $source" || print_error "Failed to create symlink from $target to $source"
 }
 
-# Function to clear broken symlinks from a given directory (not recursive)
+# Clear broken symlinks in a directory
 clear_broken_symlinks() {
     # Parameters:
-    # $1: Parent directory to search for broken symlinks
+    # $1: Directory to search for broken symlinks
 
-    local parent_dir="$1"
+    local dir="$1"
 
-    # Check if the directory argument is provided
-    if [ -z "$parent_dir" ]; then
-        print_error "Missing directory argument."
+    if [ -z "$dir" ] || [ ! -d "$dir" ]; then
+        print_error "Invalid directory: $dir"
         return 1
     fi
 
-    # Check if the given directory exists
-    if [ ! -d "$parent_dir" ]; then
-        print_error "Directory does not exist: $parent_dir"
-        return 1
-    fi
-
-    # List all files and directories in the given directory
-    for entry in "$parent_dir"/*; do
-        # If the entry is a broken symlink
+    for entry in "$dir"/*; do
         if is_broken_symlink "$entry"; then
-            # Attempt to remove the broken symlink
+            print_message "Broken symlink found: $entry"
             remove_broken_symlink "$entry"
+        else
+            print_message "Not a broken symlink: $entry"
         fi
     done
+}
+
+# Check if a file is a broken symlink
+is_broken_symlink() {
+    local file="$1"
+    [ ! -e "$file" ] && [ -L "$file" ]
+}
+
+# Remove a broken symlink
+remove_broken_symlink() {
+    local symlink="$1"
+
+    rm "$symlink" && print_message "Removed broken symlink: $symlink" || print_error "Failed to remove broken symlink: $symlink"
 }
