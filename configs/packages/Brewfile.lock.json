@@ -5,10 +5,10 @@
         "revision": "379bc49cf928a18cb0e7dcad4946278ff831e420"
       },
       "homebrew/cask-fonts": {
-        "revision": "21f61e4e70b7376a2b6bcf6e9334a6512a0e6867"
+        "revision": "219b9fd00b6efc09350eacd7181f0b4641490623"
       },
       "mongodb/brew": {
-        "revision": "9d3efa2cbd8c0fa090b1fdbbb4d100f3fedd7db3"
+        "revision": "f241435ca04d377f0efaa7e270bb33ad250daefa"
       }
     },
     "cask": {
@@ -31,7 +31,7 @@
         }
       },
       "android-studio": {
-        "version": "2022.3.1.20",
+        "version": "2022.3.1.21",
         "options": {
           "full_name": "android-studio"
         }
@@ -49,7 +49,7 @@
         }
       },
       "expressvpn": {
-        "version": "11.44.1.78733",
+        "version": "11.45.0.78843",
         "options": {
           "full_name": "expressvpn"
         }
@@ -67,7 +67,7 @@
         }
       },
       "google-chrome": {
-        "version": "119.0.6045.105",
+        "version": "119.0.6045.123",
         "options": {
           "full_name": "google-chrome"
         }
@@ -85,7 +85,7 @@
         }
       },
       "ledger-live": {
-        "version": "2.69.0",
+        "version": "2.71.0",
         "options": {
           "full_name": "ledger-live"
         }
@@ -121,7 +121,7 @@
         }
       },
       "visual-studio-code": {
-        "version": "1.84.1",
+        "version": "1.84.2",
         "options": {
           "full_name": "visual-studio-code"
         }
