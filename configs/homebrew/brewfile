@@ -30,8 +30,8 @@ brew 'git'
 brew 'heroku'
 brew 'mas'
 brew 'mongodb-community'
-brew 'node'
 brew 'redis'
+brew 'watchman'
 
 mas 'GarageBand', id: 682658836
 mas 'iMovie', id: 408981434

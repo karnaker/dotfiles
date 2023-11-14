@@ -70,19 +70,26 @@ link_source_to_target() {
     ln -s "$source" "$target" && print_message "Created symlink: $target -> $source" || print_error "Failed to create symlink from $target to $source"
 }
 
-# Clear broken symlinks in a directory
+# Clear broken symlinks in a directory, including hidden files
 clear_broken_symlinks() {
     # Parameters:
     # $1: Directory to search for broken symlinks
 
     local dir="$1"
 
+    # Validate the directory parameter
     if [ -z "$dir" ] || [ ! -d "$dir" ]; then
         print_error "Invalid directory: $dir"
         return 1
     fi
 
-    for entry in "$dir"/*; do
+    # Iterate over all files, including hidden files and directories
+    for entry in "$dir"/{,.[!.],..?}*; do
+
+        # Skip non-existent glob matches
+        [ ! -e "$entry" ] && [ ! -L "$entry" ] && continue
+
+        # Handle broken symlinks and non-symlinks
         if is_broken_symlink "$entry"; then
             print_message "Broken symlink found: $entry"
             remove_broken_symlink "$entry"
