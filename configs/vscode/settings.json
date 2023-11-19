@@ -18,8 +18,22 @@
     // Use normal font weight for better legibility.
     "editor.fontWeight": "normal",
 
-    // Set the tab size to 4 spaces for code indentation.
+    // Set the default tab size to 4 spaces for code indentation.
     "editor.tabSize": 4,
+
+    // Override settings for specific languages
+    "[javascript]": {
+        // Set the tab size to 2 spaces for JavaScript files
+        "editor.tabSize": 2
+    },
+    "[typescript]": {
+        // Set the tab size to 2 spaces for TypeScript files
+        "editor.tabSize": 2
+    },
+    "[python]": {
+        // Keep the tab size at 4 spaces for Python files
+        "editor.tabSize": 4
+    },
 
     // Enable auto-save with a delay for files.
     "files.autoSave": "afterDelay",

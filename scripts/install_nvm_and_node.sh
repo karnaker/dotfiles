@@ -32,5 +32,3 @@ install_nvm_and_node() {
 
 # Call the main function
 install_nvm_and_node
-
-# TODO Update README.md with the changes so far (install nvm and node)
