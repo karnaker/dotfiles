@@ -269,7 +269,7 @@ Configuration files are stored in the `configs/` directory. These files are used
 
 ### Zsh Configurations (`configs/zsh/`)
 
-- `.zshrc`: The configuration file for Zsh. It specifies the path to the Oh My Zsh installation, sets the theme, determines auto-update behavior, and lists the desired plugins. This file should be symlinked to the user's home directory.
+- `.zshrc`: The main configuration file for Zsh. It specifies the path to the Oh My Zsh installation, sets the theme, determines auto-update behavior, and lists the desired plugins. This file should be symlinked to the user's home directory.
 
 ## Important Notes
 

@@ -60,12 +60,12 @@ main() {
     grant_permissions
     execute_script "system_tools.sh"
     execute_script "install_homebrew_packages.sh"
+    execute_script "install_nvm_and_node.sh"
+    execute_script "macos_config.sh"
     execute_script "configure_xcode.sh"
     execute_script "setup_git_configs.sh"
     execute_script "setup_iterm2_configs.sh"
-    execute_script "macos_config.sh"
     execute_script "setup_zsh_configs.sh"
-    execute_script "install_nvm_and_node.sh"
     execute_script "setup_vscode_configs.sh"
     execute_script "clone_repositories.sh"
     end_bootstrap
