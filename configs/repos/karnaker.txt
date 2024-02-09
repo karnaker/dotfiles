@@ -1,4 +1,5 @@
 git@github.com:karnaker/aind2-nlp-capstone.git
+git@github.com:karnaker/ci_githooks_gh_actions_demo.git
 git@github.com:karnaker/cfg.git
 git@github.com:karnaker/digitalocean_dev.git
 git@github.com:karnaker/dog-project.git
