@@ -25,3 +25,14 @@ source $ZSH/oh-my-zsh.sh
 export NVM_DIR="$HOME/.nvm"  # Set nvm installation directory
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Set JAVA_HOME and add Java bin directory to PATH
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
+export PATH="$JAVA_HOME/bin:$PATH"
+
+# Set the ANDROID_HOME environment variable to the Android SDK path
+export ANDROID_HOME=$HOME/Library/Android/sdk
+# Add the Android Emulator binary path to the PATH environment variable
+export PATH=$PATH:$ANDROID_HOME/emulator
+# Add the Android platform-tools directory to the PATH environment variable
+export PATH=$PATH:$ANDROID_HOME/platform-tools

@@ -36,8 +36,8 @@ configure_xcode() {
             print_message "Xcode has already been configured."
         fi
         
-        # Call the function to install iOS Simulator
-        install_ios_simulator
+        # Call the function to install and update iOS Simulator
+        install_and_update_ios_simulator
     else
         print_error "Xcode is not installed. Please install Xcode first."
     fi
@@ -49,15 +49,18 @@ is_ios_simulator_installed() {
     [ -d "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform" ]
 }
 
-# Function to install the iOS Simulator
-install_ios_simulator() {
+# Function to install and update the iOS Simulator
+install_and_update_ios_simulator() {
     # Check if the iOS Simulator is already installed
     if ! is_ios_simulator_installed; then
-        print_message "Downloading and installing iOS Simulator"
-        xcodebuild -downloadPlatform iOS
+        print_message "iOS Simulator is not installed."
     else
         print_message "iOS Simulator is already installed."
     fi
+    
+    # Update the iOS Simulator to the latest version
+    print_message "Downloading and installing latest version of iOS Simulator."
+    xcodebuild -downloadPlatform iOS
 }
 
 # Call the configure_xcode function

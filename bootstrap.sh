@@ -66,6 +66,7 @@ main() {
     execute_script "setup_git_configs.sh"
     execute_script "setup_iterm2_configs.sh"
     execute_script "setup_zsh_configs.sh"
+    execute_script "update_java_home.sh"
     execute_script "setup_vscode_configs.sh"
     execute_script "clone_repositories.sh"
     end_bootstrap

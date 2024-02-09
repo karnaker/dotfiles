@@ -1,8 +1,11 @@
 Dart-Code.dart-code
 Dart-Code.flutter
+dbaeumer.vscode-eslint
 eamodio.gitlens
+esbenp.prettier-vscode
 GitHub.copilot
 GitHub.copilot-chat
+github.vscode-github-actions
 Gruntfuggly.todo-tree
 ms-azuretools.vscode-docker
 ms-python.isort

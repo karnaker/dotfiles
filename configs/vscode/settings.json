@@ -21,28 +21,11 @@
     // Set the default tab size to 4 spaces for code indentation.
     "editor.tabSize": 4,
 
-    // Override settings for specific languages
-    "[javascript]": {
-        // Set the tab size to 2 spaces for JavaScript files
-        "editor.tabSize": 2
-    },
-    "[typescript]": {
-        // Set the tab size to 2 spaces for TypeScript files
-        "editor.tabSize": 2
-    },
-    "[python]": {
-        // Keep the tab size at 4 spaces for Python files
-        "editor.tabSize": 4
-    },
-
     // Enable auto-save with a delay for files.
     "files.autoSave": "afterDelay",
 
     // Enable auto-save with a delay of 1000 milliseconds (1 second).
     "files.autoSaveDelay": 1000,
-
-    // Configure the Python language server to use "Pylance" for enhanced Python support.
-    "python.languageServer": "Pylance",
 
     // Configure the integrated terminal font family to Jetbrains Mono.
     "terminal.integrated.fontFamily": "Jetbrains Mono",

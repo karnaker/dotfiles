@@ -1,5 +1,6 @@
 tap 'heroku/brew'
 tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-versions'
 tap 'mongodb/brew'
 
 cask '1password'
@@ -18,21 +19,27 @@ cask 'ledger-live'
 cask 'mongodb-compass'
 cask 'ngrok'
 cask 'paintbrush'
+cask 'reactotron'
 cask 'rectangle'
 cask 'slack'
 cask 'visual-studio-code'
 cask 'vlc'
 cask 'zoom'
+cask 'zulu17'
 
 brew 'cocoapods'
 brew 'coreutils'
+brew 'fastlane'
 brew 'git'
 brew 'heroku'
+brew 'ios-deploy'
 brew 'mas'
 brew 'mongodb-community'
 brew 'redis'
+brew 'tree'
 brew 'watchman'
 
+mas 'Apple Developer', id: 640199958
 mas 'GarageBand', id: 682658836
 mas 'iMovie', id: 408981434
 mas 'Xcode', id: 497799835

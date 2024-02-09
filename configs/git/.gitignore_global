@@ -13,9 +13,14 @@ Icon
 # Thumbnail cache files
 ._*
 
-# Files that might appear on external disks
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
 .Spotlight-V100
+.TemporaryItems
 .Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
 
 # Directories potentially created on remote AFP share
 .AppleDB
@@ -24,8 +29,19 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-
 # === VS Code specific ===
 
-# VSCode directory
+# VSCode directory and its contents
 .vscode/*
+# Exclude specific files in the VSCode directory
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
