@@ -164,6 +164,12 @@
         "options": {
           "full_name": "reactotron"
         }
+      },
+      "1password-cli": {
+        "version": "2.25.0",
+        "options": {
+          "full_name": "1password-cli"
+        }
       }
     },
     "brew": {

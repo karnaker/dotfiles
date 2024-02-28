@@ -4,6 +4,7 @@ tap 'homebrew/cask-versions'
 tap 'mongodb/brew'
 
 cask '1password'
+cask '1password-cli'
 cask 'adobe-acrobat-pro'
 cask 'adobe-acrobat-reader'
 cask 'android-studio'
