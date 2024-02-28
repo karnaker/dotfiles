@@ -27,6 +27,7 @@ cask 'vlc'
 cask 'zoom'
 cask 'zulu17'
 
+brew 'awscli'
 brew 'cocoapods'
 brew 'coreutils'
 brew 'fastlane'
