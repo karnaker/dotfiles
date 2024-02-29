@@ -69,6 +69,7 @@ main() {
     execute_script "update_java_home.sh"
     execute_script "setup_vscode_configs.sh"
     execute_script "clone_repositories.sh"
+    execute_script "verify_1password_cli_config.sh"
     end_bootstrap
 }
 

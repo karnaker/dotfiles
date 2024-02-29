@@ -36,3 +36,6 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 # Add the Android platform-tools directory to the PATH environment variable
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# Source 1Password CLI integration for AWS CLI authentication
+source /Users/vikram/.config/op/plugins.sh

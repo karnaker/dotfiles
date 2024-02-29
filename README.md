@@ -5,7 +5,7 @@ This repository contains a collection of configuration files and scripts to set 
 ## Dependencies
 
 - Active internet connection
-- macOS version (Sonoma 14.1)
+- macOS version (Sonoma 14.2.1)
 
 ## Usage
 
@@ -232,6 +232,10 @@ This script provides utility functions for handling symbolic links.
 ### `scripts/system_tools.sh`
 
 Handles the installation of essential system tools like XCode Command Line Tools and Rosetta (for M1 Macs).
+
+### `scripts/verify_1password_cli_config.sh`
+
+Ensures the 1Password CLI integration is correctly set up by verifying the `plugins.sh` file's presence.
 
 ## Configurations
 
