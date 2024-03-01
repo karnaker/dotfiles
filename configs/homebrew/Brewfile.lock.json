@@ -5,13 +5,13 @@
         "revision": "379bc49cf928a18cb0e7dcad4946278ff831e420"
       },
       "homebrew/cask-fonts": {
-        "revision": "d1985142ad6b15d7c260cb1cbfdacbadb1dd0c7e"
+        "revision": "89b3641db3c55cc766f78c5752f3140f098093f1"
       },
       "mongodb/brew": {
         "revision": "80a29ce40a4876b91396502bf6c3c701484d8e0e"
       },
       "homebrew/cask-versions": {
-        "revision": "10adb3b533f438c709902da0df7ed2185bd6d9f9"
+        "revision": "2c6cb9534766dc92448aaa6da943bd1354bce579"
       }
     },
     "cask": {
@@ -34,7 +34,7 @@
         }
       },
       "android-studio": {
-        "version": "2023.1.1.28",
+        "version": "2023.2.1.23",
         "options": {
           "full_name": "android-studio"
         }
@@ -94,7 +94,7 @@
         }
       },
       "mongodb-compass": {
-        "version": "1.42.1",
+        "version": "1.42.2",
         "options": {
           "full_name": "mongodb-compass"
         }
@@ -686,6 +686,50 @@
               "cellar": ":any_skip_relocation",
               "url": "https://ghcr.io/v2/homebrew/core/awscli/blobs/sha256:9b00c4820f6fc1e3f13e0a072a4db0fbbf48d1d50e48f48d1f0c97d569cd128f",
               "sha256": "9b00c4820f6fc1e3f13e0a072a4db0fbbf48d1d50e48f48d1f0c97d569cd128f"
+            }
+          }
+        }
+      },
+      "opentofu": {
+        "version": "1.6.2",
+        "bottle": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_sonoma": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/opentofu/blobs/sha256:883170dcdc5df4bf8d895dbabc8c6b06941c4c819266ba58bd3664674f1022ae",
+              "sha256": "883170dcdc5df4bf8d895dbabc8c6b06941c4c819266ba58bd3664674f1022ae"
+            },
+            "arm64_ventura": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/opentofu/blobs/sha256:564ce4b3c92a68e84ab2ea7cf6fa73c093e4a6b0f012ece99373996d7491691c",
+              "sha256": "564ce4b3c92a68e84ab2ea7cf6fa73c093e4a6b0f012ece99373996d7491691c"
+            },
+            "arm64_monterey": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/opentofu/blobs/sha256:ae7b28ae61d35203ba1a39868c9b5c1a2cbd656cb55c2b2887d57f68a05436af",
+              "sha256": "ae7b28ae61d35203ba1a39868c9b5c1a2cbd656cb55c2b2887d57f68a05436af"
+            },
+            "sonoma": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/opentofu/blobs/sha256:9a4ccbceb83e60fcb7474478a877fcb282b41050bfe7b872ba72ab1ff456f84b",
+              "sha256": "9a4ccbceb83e60fcb7474478a877fcb282b41050bfe7b872ba72ab1ff456f84b"
+            },
+            "ventura": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/opentofu/blobs/sha256:97d3590c34489e3516bc77988582c003e1de067ff18ae0d1b52cce7a9e78b093",
+              "sha256": "97d3590c34489e3516bc77988582c003e1de067ff18ae0d1b52cce7a9e78b093"
+            },
+            "monterey": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/opentofu/blobs/sha256:557d894c0e9451d07110425595d49d7f671f393d2437a035f24e5c5f8edae5ce",
+              "sha256": "557d894c0e9451d07110425595d49d7f671f393d2437a035f24e5c5f8edae5ce"
+            },
+            "x86_64_linux": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/opentofu/blobs/sha256:0a6fe96e4a92938356ce567dcf4fb7cddbae5b82f5098eb169f495d17aa1275c",
+              "sha256": "0a6fe96e4a92938356ce567dcf4fb7cddbae5b82f5098eb169f495d17aa1275c"
             }
           }
         }
