@@ -26,7 +26,7 @@ cask 'slack'
 cask 'visual-studio-code'
 cask 'vlc'
 cask 'zoom'
-cask 'zulu17'
+cask 'zulu@17'
 
 brew 'awscli'
 brew 'cocoapods'
