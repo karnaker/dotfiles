@@ -37,5 +37,8 @@
     "terminal.integrated.fontWeight": "normal",
 
     // Set the color theme for the workbench to "Dark Modern Theme".
-    "workbench.colorTheme": "Dark Modern Theme"
+    "workbench.colorTheme": "Dark Modern Theme",
+
+    // Enable GitHub Copilot's AI-powered autocompletions.
+    "github.copilot.editor.enableAutoCompletions": true
 }
