@@ -15,7 +15,7 @@ git@github.com:karnaker/Market_Cap_by_Country.git
 git@github.com:karnaker/MVP1wk.git
 git@github.com:karnaker/my-rnn-project.git
 git@github.com:karnaker/python_docker_heroku.git
-git@github.com:karnaker/react_vite_docker_fargate
+git@github.com:karnaker/react_vite_docker_fargate.git
 git@github.com:karnaker/recursive_file_printer.git
 git@github.com:karnaker/sendgrid-send-email.git
-git@github.com:karnaker/test_rn_setup
+git@github.com:karnaker/test_rn_setup.git
