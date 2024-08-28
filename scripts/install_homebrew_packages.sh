@@ -33,8 +33,8 @@ update_homebrew() {
 
 # Function to upgrade formulae
 upgrade_formulae() {
-    print_message "Upgrading Installed Formulae"
-    brew upgrade
+    print_message "Upgrading Installed Formulae (Greedy Mode)"
+    brew upgrade --greedy
 }
 
 # Function to run brew bundle
