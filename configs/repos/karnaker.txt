@@ -8,6 +8,7 @@ git@github.com:karnaker/enwiki.git
 git@github.com:karnaker/extract-email-from-text-to-csv-python.git
 git@github.com:karnaker/extract-email-from-url.git
 git@github.com:karnaker/FRED.git
+git@github.com:karnaker/fullstackopen-exercises.git
 git@github.com:karnaker/huey_mvp.git
 git@github.com:karnaker/iex.git
 git@github.com:karnaker/intrinio.git

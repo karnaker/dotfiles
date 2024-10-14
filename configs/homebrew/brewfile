@@ -44,5 +44,6 @@ brew 'watchman'
 
 mas 'Apple Developer', id: 640199958
 mas 'GarageBand', id: 682658836
+mas 'GoPro Quick', id: 561350520
 mas 'iMovie', id: 408981434
 mas 'Xcode', id: 497799835
