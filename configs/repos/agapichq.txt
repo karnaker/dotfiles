@@ -1,6 +1,7 @@
 git@github.com:agapichq/.github.git
 git@github.com:agapichq/agapic-metrics.git
 git@github.com:agapichq/agapichq.github.io.git
+git@github.com:agapichq/agapic_platform.git
 git@github.com:agapichq/agent-buddy.git
 git@github.com:agapichq/app_agapic_com.git
 git@github.com:agapichq/buddy-convos.git
