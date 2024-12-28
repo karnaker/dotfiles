@@ -24,6 +24,7 @@ ms-vscode-remote.vscode-remote-extensionpack
 ms-vscode.remote-explorer
 ms-vscode.remote-server
 oderwat.indent-rainbow
+pjmiravalle.terraform-advanced-syntax-highlighting
 ritwickdey.LiveServer
 VisualStudioExptTeam.intellicode-api-usage-examples
 VisualStudioExptTeam.vscodeintellicode

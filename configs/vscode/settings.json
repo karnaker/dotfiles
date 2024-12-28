@@ -1,5 +1,4 @@
-{
-    
+{    
     // Enable bracket pair colorization for better code readability.
     "editor.bracketPairColorization.enabled": true,
 
@@ -18,8 +17,13 @@
     // Use normal font weight for better legibility.
     "editor.fontWeight": "normal",
 
-    // Set the default tab size to 4 spaces for code indentation.
-    "editor.tabSize": 4,
+    // Set the default tab size to 2 spaces for code indentation.
+    "editor.tabSize": 2,
+
+    // Language-specific tab size settings
+    "[python]": {
+        "editor.tabSize": 4
+    },
 
     // Enable auto-save with a delay for files.
     "files.autoSave": "afterDelay",
