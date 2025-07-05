@@ -44,5 +44,6 @@
     "workbench.colorTheme": "Dark Modern Theme",
 
     // Enable GitHub Copilot's AI-powered autocompletions.
-    "github.copilot.editor.enableAutoCompletions": true
+    "github.copilot.editor.enableAutoCompletions": true,
+    "github.copilot.nextEditSuggestions.enabled": true
 }
