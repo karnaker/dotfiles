@@ -1,5 +1,4 @@
-{
-    
+{    
     // Enable bracket pair colorization for better code readability.
     "editor.bracketPairColorization.enabled": true,
 
@@ -18,17 +17,19 @@
     // Use normal font weight for better legibility.
     "editor.fontWeight": "normal",
 
-    // Set the tab size to 4 spaces for code indentation.
-    "editor.tabSize": 4,
+    // Set the default tab size to 2 spaces for code indentation.
+    "editor.tabSize": 2,
+
+    // Language-specific tab size settings
+    "[python]": {
+        "editor.tabSize": 4
+    },
 
     // Enable auto-save with a delay for files.
     "files.autoSave": "afterDelay",
 
     // Enable auto-save with a delay of 1000 milliseconds (1 second).
     "files.autoSaveDelay": 1000,
-
-    // Configure the Python language server to use "Pylance" for enhanced Python support.
-    "python.languageServer": "Pylance",
 
     // Configure the integrated terminal font family to Jetbrains Mono.
     "terminal.integrated.fontFamily": "Jetbrains Mono",
@@ -40,5 +41,9 @@
     "terminal.integrated.fontWeight": "normal",
 
     // Set the color theme for the workbench to "Dark Modern Theme".
-    "workbench.colorTheme": "Dark Modern Theme"
+    "workbench.colorTheme": "Dark Modern Theme",
+
+    // Enable GitHub Copilot's AI-powered autocompletions.
+    "github.copilot.editor.enableAutoCompletions": true,
+    "github.copilot.nextEditSuggestions.enabled": true
 }

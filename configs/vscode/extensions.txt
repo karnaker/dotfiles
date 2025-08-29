@@ -1,8 +1,12 @@
+1password.op-vscode
 Dart-Code.dart-code
 Dart-Code.flutter
+dbaeumer.vscode-eslint
 eamodio.gitlens
+esbenp.prettier-vscode
 GitHub.copilot
 GitHub.copilot-chat
+github.vscode-github-actions
 Gruntfuggly.todo-tree
 ms-azuretools.vscode-docker
 ms-python.isort
@@ -21,6 +25,7 @@ ms-vscode-remote.vscode-remote-extensionpack
 ms-vscode.remote-explorer
 ms-vscode.remote-server
 oderwat.indent-rainbow
+pjmiravalle.terraform-advanced-syntax-highlighting
 ritwickdey.LiveServer
 VisualStudioExptTeam.intellicode-api-usage-examples
 VisualStudioExptTeam.vscodeintellicode

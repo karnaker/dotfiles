@@ -20,23 +20,25 @@ install_oh_my_zsh() {
     fi
 }
 
-# Function to symlink the .zshrc file
-symlink_zshrc() {
-    # Define the source and target paths
-    local zsh_source_path="$(pwd)/configs/zsh/.zshrc"
-    local zsh_target_path="$HOME/.zshrc"
-    
-    # Clear any broken symlinks in the target directory
-    clear_broken_symlinks "$(dirname "$zsh_target_path")"
+# Function to symlink a file
+symlink_file() {
+    local source_path="$1"
+    local target_path="$2"
 
-    # Create a symlink for .zshrc
-    create_symlink "$zsh_source_path" "$zsh_target_path"
+    # Clear any broken symlinks in the target directory
+    clear_broken_symlinks "$(dirname "$target_path")"
+
+    # Create a symlink
+    create_symlink "$source_path" "$target_path"
 }
 
 # Main function for configuring Zsh
 main() {
     install_oh_my_zsh
-    symlink_zshrc
+
+    # Symlink .zshrc
+    symlink_file "$(pwd)/configs/zsh/.zshrc" "$HOME/.zshrc"
+
 }
 
 # Call the main function

@@ -1,13 +1,13 @@
 tap 'heroku/brew'
-tap 'homebrew/cask-fonts'
 tap 'mongodb/brew'
 
 cask '1password'
+cask '1password-cli'
 cask 'adobe-acrobat-pro'
 cask 'adobe-acrobat-reader'
 cask 'android-studio'
 cask 'discord'
-cask 'docker'
+cask 'docker-desktop'
 cask 'expressvpn'
 cask 'flutter'
 cask 'font-jetbrains-mono'
@@ -18,21 +18,30 @@ cask 'ledger-live'
 cask 'mongodb-compass'
 cask 'ngrok'
 cask 'paintbrush'
+cask 'reactotron'
 cask 'rectangle'
 cask 'slack'
 cask 'visual-studio-code'
 cask 'vlc'
 cask 'zoom'
+cask 'zulu@17'
 
+brew 'awscli'
 brew 'cocoapods'
 brew 'coreutils'
+brew 'fastlane'
 brew 'git'
 brew 'heroku'
+brew 'ios-deploy'
 brew 'mas'
 brew 'mongodb-community'
-brew 'node'
+brew 'opentofu'
 brew 'redis'
+brew 'tree'
+brew 'watchman'
 
+mas 'Apple Developer', id: 640199958
 mas 'GarageBand', id: 682658836
+mas 'GoPro Quick', id: 561350520
 mas 'iMovie', id: 408981434
 mas 'Xcode', id: 497799835

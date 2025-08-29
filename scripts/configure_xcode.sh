@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-# This script configures Xcode
-
 # Import print functions
 . "$(pwd)/scripts/print_functions.sh"
 
@@ -37,10 +35,33 @@ configure_xcode() {
         else
             print_message "Xcode has already been configured."
         fi
+        
+        # Call the function to install and update iOS Simulator
+        install_and_update_ios_simulator
     else
         print_error "Xcode is not installed. Please install Xcode first."
     fi
 }
 
-# Call the configuration function
+# Function to check if iOS Simulator is installed
+is_ios_simulator_installed() {
+    # Check if the iOS Simulator is already installed
+    [ -d "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform" ]
+}
+
+# Function to install and update the iOS Simulator
+install_and_update_ios_simulator() {
+    # Check if the iOS Simulator is already installed
+    if ! is_ios_simulator_installed; then
+        print_message "iOS Simulator is not installed."
+    else
+        print_message "iOS Simulator is already installed."
+    fi
+    
+    # Update the iOS Simulator to the latest version
+    print_message "Downloading and installing latest version of iOS Simulator."
+    xcodebuild -downloadPlatform iOS
+}
+
+# Call the configure_xcode function
 configure_xcode
